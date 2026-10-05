@@ -8,7 +8,7 @@
     <title>AurumRecords</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a href="index.html" class="navbar-brand text-uppercase">AURUM RECORDS</a>
 
@@ -21,16 +21,200 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">Главная</a>
+                        <a href="#" class="nav-link active text-uppercase">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">О нас</a>
+                        <a href="#about" class="nav-link text-uppercase">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#price" class="nav-link text-uppercase">Расценки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-uppercase">Контакты</a>
                     </li>
                 </ul>
-                <button class="btn border ms-lg-3" data-bs-toggle="modal" data-bs-target="#loginModal">Войти</button>
+                <button class="btn border ms-lg-5 text-uppercase" data-bs-toggle="modal" data-bs-target="#loginModal">Войти</button>
             </div>
         </div>
     </nav>
+
+
+    <div class="hero">
+        <div class="hero__title">
+            <h1>Первое народное <span>музыкальное издательство</span></h1>
+        </div>
+        <div class="hero__subtitle">
+            <h2>Дропай треки, слушай музыку и просто кайфуй с <span>Aurum Records!</span></h2>
+        </div>
+        <a href="#" class="hero__button">Присоединиться к нам!</a>
+    </div>
+
+    <div class="about" id="about">
+        <div class="about__title"><h1>Кто мы?</h1></div>
+        <div class="about__text">
+            <p><span>Aurum Records</span> - первый по-настоящему народный музыкальный лейбл из города Косшы.
+                Любой желащий может записаться на наших студиях, выпустить трек на любой площадке (включая нашу собственную))
+                продвигать свои треки, ну и конечно стать полноправным участником нашего лейбла и наслаждаться своим
+                творчеством!</p>
+        </div>
+        <div class="about__artists">
+            <div class="about__artists-title">
+                <div class="about__artists-title-content">
+                    <h1>Наши артисты </h1>
+                    <p>погорелого театра</p>
+                </div>
+            </div>
+            <div class="artist_cards">
+                <div class="artist__card">
+                    <div class="artist__card-photo">
+                        <img src="img/20250914_192949.jpg" alt="dmitry_rspkn">
+                    </div>
+                    <div class="artist__card-name">dmitry_rspkn</div>
+                    <div class="artist__card-desc">
+                        <p>Автор этого сайта, иногда пишу биточки. Ума не выкладывать свои "шедевры" пока хватает.
+                            Родом из села Новый Колутон Акмолинской области.</p>
+                    </div>
+                </div>
+                <div class="artist__card">
+                    <div class="artist__card-photo">
+                        <img src="img/avtosport.jpeg" alt="">
+                    </div>
+                    <div class="artist__card-name">Автоспорт</div>
+                    <div class="artist__card-desc">
+                        <p>Шугейз инди-рок группа, основанная в 2017 году Андреем Ванюковым.</p>
+                    </div>
+                </div>
+                <div class="artist__card">
+                    <div class="artist__card-photo">
+                        <img src="img/mnogoznaal.jpeg" alt="">
+                    </div>
+                    <div class="artist__card-name">Mnogoznaal</div>
+                    <div class="artist__card-desc">
+                        <p>Исполнитель из города Печора с северным вайбом и своей музыкальной вселенной</p>
+                    </div>
+                </div>
+                <div class="artist__card">
+                    <div class="artist__card-photo">
+                        <img src="img/gk.jpeg" alt="">
+                    </div>
+                    <div class="artist__card-name">goodnight kisses</div>
+                    <div class="artist__card-desc">
+                        <p>Шугейз инди-рок группа с особым и свежим звучанием</p>
+                    </div>
+                </div>
+                <div class="artist__card">
+                    <div class="artist__card-photo">
+                        <img src="img/Unknown_pleasures.jpg" alt="">
+                    </div>
+                    <div class="artist__card-name">Joy Division</div>
+                    <div class="artist__card-desc">
+                        <p><span>Просто добавил для нишевости</span>Пионеры пост-панк сцены. Послушайте один раз - и сразу станет всё понятно.</p>
+                    </div>
+                </div>
+                <div class="artist__card">
+                    <div class="artist__card-photo">
+                        <img src="img/onda.jpg" alt="">
+                    </div>
+                    <div class="artist__card-name">ONDA ANDAR</div>
+                    <div class="artist__card-desc">
+                        <p>Новый, революционный саунддизайн, работа со сведением. Отражение внутреннего мира автора!</p>
+                    </div>
+                </div>
+                <div class="artist__card">
+                    <div class="artist__card-photo">
+                        <img src="img/husky.jpeg" alt="">
+                    </div>
+                    <div class="artist__card-name">Хаски</div>
+                    <div class="artist__card-desc">
+                        <p>Настоящий поэт нашего времени. Провокационный, особый и самобытный</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container my-5 price" id="price">
+        <h2 class="text-center text-uppercase mb-4">Основные расценки</h2>
+        <p class="text-center text-uppercase">Подробности объясним</p>
+
+        <div class="pricing-block mb-5">
+            <h3 class="h4 mb-3 text-uppercase">Дистрибьюция и продвижение</h3>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle custom-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Тариф</th>
+                            <th scope="col">Что входит</th>
+                            <th scope="col">Срок</th>
+                            <th scope="col" class="text-end">Цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold">Basic Drop</td>
+                            <td>Релиз на 30+ площадок (VK, Yandex, Apple, Spotify), 100% роялти артисту</td>
+                            <td>2–4 дня</td>
+                            <td class="price text-end">5 000 ₸</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">PRO Motion</td>
+                            <td>Релиз + питчинг в плейлисты, промо-поддержка, карточка музыканта</td>
+                            <td>5–7 дней</td>
+                            <td class="price text-end">15 000 ₸</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Full Label Deal</td>
+                            <td>Максимальный питчинг, таргетированная реклама, дизайн обложки и PR</td>
+                            <td>Индивидуально</td>
+                            <td class="price text-end">от 35 000 ₸</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="pricing-block">
+            <h3 class="h4 mb-3 text-uppercase">Запись и работа на студии</h3>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle custom-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Услуга</th>
+                        <th scope="col">Описание</th>
+                        <th scope="col">Формат</th>
+                        <th scope="col" class="text-end">Цена</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="fw-bold">Запись вокала / демо</td>
+                        <td>Аренда студии с звукорежиссером, обработка вокала «на лету»</td>
+                        <td>1 час</td>
+                        <td class="price text-end">7 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Сведение и мастеринг</td>
+                        <td>Полная обработка трека, тюнинг вокала, коммерческий громкий звук</td>
+                        <td>1 трек</td>
+                        <td class="price text-end">18 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Бит на заказ / Продакшн</td>
+                        <td>Написание уникального аранжировочного бита под ключ со всеми правами</td>
+                        <td>1 трек</td>
+                        <td class="price text-end">от 25 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Ночь на студии (Night Pass)</td>
+                        <td>Безлимитная запись с 23:00 до 07:00 с инженером</td>
+                        <td>8 часов</td>
+                        <td class="price text-end">40 000 ₸</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
 
     <div class="modal fade" id="loginModal" tabindex="-1">
@@ -50,12 +234,25 @@
                             <label class="form-label">Ваш пароль</label>
                             <input type="password" class="form-control bg-black text-white border-secondary">
                         </div>
-                        <button type="submit" class="btn w-100">Заходим</button>
+                        <button type="submit" class="btn w-100 modal-button">Заходим</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="logo">
+            <p>AURUM RECORDS</p>
+        </div>
+        <div class="author">
+            <p>&copy; Дмитрий Рощупкин, IT-2505. Никакие права не защищены</p>
+        </div>
+        <a class="aitu" href="https://astanait.edu.kz/ru" target="_blank">
+            <img src="img/aitu_logo.png" alt="">
+            <p>AITU</p>
+        </a>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

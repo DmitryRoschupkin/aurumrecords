@@ -1,12 +1,306 @@
 body {
     background: black;
     color: #ffefcc !important;
+    font-family: 'Futura SuperXP', sans-serif;
+    font-weight: 400;
 }
 
 a, button {
     color: #ffefcc !important;
 }
 
-.navbar-brand {
+@font-face {
+    font-family: 'Futura SuperXP';
+    src: url('../fonts/FuturaSuperXP-Regular.otf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'Futura SuperXP';
+    src: url('../fonts/FuturaSuperXP-Bold.otf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.modal-button {
+    background-color: black;
+    transition: all .3s;
+}
+
+.modal-button:hover {
+    background-color: #151515;
+    box-shadow: 0 0 10px #2b2b2b;
+    letter-spacing: 1px;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand {
+    letter-spacing: 3px;
+    font-size: 22px;
+    transition: letter-spacing .3s, text-shadow .3s;
+}
+
+.navbar-brand:hover {
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #ffefcc !important;
+}
+
+.navbar-toggler-icon {
+    color: #ffefcc !important;
+}
+
+.nav-item {
+    transition: text-shadow .3s, letter-spacing .3s;
+}
+
+.nav-item:hover {
+    text-shadow: 0 0 10px #ffefcc;
+    letter-spacing: 1px;
+}
+
+.active {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    padding: 0 15%;
+    background-image: url('../img/studio.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.hero__title h1 {
+    letter-spacing: 2px;
+    font-size: 50px;
+}
+
+.hero__subtitle {
+    letter-spacing: 2px;
+}
+
+.hero__subtitle span {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ffecac !important;
+}
+
+.hero__title span {
+    color: #ffecac;
+    text-shadow: 0 0 10px #ffefcc;
+}
+
+.hero__button {
+    display: inline-block;
+    border: 1px solid #ffefcc;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: letter-spacing .3s, box-shadow .3s;
+}
+
+.hero__button:hover {
+    letter-spacing: 3px;
+    box-shadow: 0 0 10px #ffefcc;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.about__title {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+    margin-bottom: 10px;
+}
+
+.about__text {
+    padding: 0 10%;
+    font-size: 24px;
+}
+
+.about__artists {
+
+}
+
+.about__artists-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.about__artists-title p {
+    text-decoration: line-through;
+}
+
+.about__text span{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.artist_cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+.artist__card-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.artist__card-photo img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    aspect-ratio: 1/1;
+}
+
+.artist__card {
+    display: flex;
+    flex-direction: column;
+    max-width: 75vw;
+    border: 1px solid #282828;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.artist__card-name {
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.pricing-block {
+    padding: 16px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 239, 204, 0.1);
+    margin-bottom: 24px;
+}
+
+.pricing-block h3 {
+    font-family: 'Futura SuperXP', sans-serif;
+    color: #ffefcc;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.custom-table {
+    margin-bottom: 0;
+    --bs-table-bg: transparent;
+}
+
+.custom-table thead th {
+    font-family: 'Futura SuperXP', sans-serif;
+    color: #ffefcc;
+    border-bottom: 1px solid rgba(255, 239, 204, 0.2);
+    font-size: 0.8rem;
+    padding: 8px 6px;
+    text-transform: uppercase;
+}
+
+.custom-table td {
+    border-color: rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem;
+    padding: 10px 6px;
+}
+
+.custom-table td.price {
+    font-weight: 700;
+    color: #ffefcc;
+    white-space: nowrap;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px 50px 30px;
+}
+
+.logo {
+    letter-spacing: 3px;
+}
+
+.aitu {
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.aitu p {
+    color: white;
+    letter-spacing: 1px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.aitu img {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+@media (min-width: 768px) {
+    .artist_cards {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 5%;
+    }
+
+    .hero {
+        padding: 0 10%;
+    }
+
+    .about__text {
+        padding: 0 8%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .artist_cards {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 5%;
+    }
+
+    .hero {
+        padding: 0 5%;
+    }
+
+    .about__text {
+        padding: 0 5%;
+        margin-bottom: 30px;
+    }
+
+    .footer {
+        margin-top: 100px;
+        padding-bottom: 20px;
+    }
 }
