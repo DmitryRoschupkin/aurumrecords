@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Контакты</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a href="index.html" class="navbar-brand text-uppercase">AURUM RECORDS</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link text-uppercase">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link text-uppercase">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#price" class="nav-link text-uppercase">Расценки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contacts.html" class="nav-link active text-uppercase">Контакты</a>
+                    </li>
+                </ul>
+                <button class="btn border ms-lg-5 text-uppercase" data-bs-toggle="modal" data-bs-target="#loginModal">Войти</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contacts-page">
+        <div class="contacts-page__title">
+            <h1>Наши контакты</h1>
+            <p>На этой странице вы можете дропнуть свои шедевры на всеобщее обозрение и послушание,
+                оставить заявку на контракт с нашим лейблом и убедиться, что автор сайта достоин 100 баллов!</p>
+        </div>
+        <div class="contacts-page__menu">
+            <h1 class="contacts-page__menu-title">Во-первых, что хотите?</h1>
+            <ul class="contacts-page__menu-list">
+                <li class="contacts-page__menu-list-item"><a href="#gallery">Посмотреть студии</a></li>
+                <li class="contacts-page__menu-list-item"><a href="#postSong">Опубликовать материал на площадки</a></li>
+                <li class="contacts-page__menu-list-item"><a href="#registration">Стать частью лэйбла</a></li>
+                <li class="contacts-page__menu-list-item"><a href="index.html">На главную, если забыли что хотели</a></li>
+            </ul>
+        </div>
+        <div class="contacts-page__gallery">
+            <div class="contacts-page__gallery-grid" id="gallery">
+                <div class="contacts-page__gallery-photo photo-super">
+                    <img src="img/studio%20(Копия).jpg" alt="">
+                </div>
+                <div class="contacts-page__gallery-photo">
+                    <img src="img/stud2.jpeg" alt="">
+                </div>
+                <div class="contacts-page__gallery-photo">
+                    <img src="img/stud3.jpeg" alt="">
+                </div>
+                <div class="contacts-page__gallery-photo">
+                    <img src="img/stud4.jpg" alt="">
+                </div>
+                <div class="contacts-page__gallery-photo">
+                    <img src="img/repa.jpg" alt="">
+                </div>
+                <div class="contacts-page__gallery-photo">
+                    <img src="img/stud1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="distribution" id="postSong">
+        <div class="distro-container">
+            <h2 class="distro-title">Дропнуть трэк!</h2>
+            <p class="distro-subtitle">Заполните данные релиза для отправки на цифровые площадки</p>
+            <form class="distro-form">
+                <div class="distro-grid">
+                    <div class="form-group">
+                        <label for="artistName">Имя артиста / Псевдоним *</label>
+                        <input type="text" id="artistName" placeholder="например, dmitry_rspkn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="trackTitle">Название трека / Альбома *</label>
+                        <input type="text" id="trackTitle" placeholder="Название релиза" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genreSelect">Жанр *</label>
+                        <select id="genreSelect" required>
+                            <option value="" selected disabled>Выберите жанр</option>
+                            <option value="hiphop">Hip-Hop / Rap</option>
+                            <option value="electronic">Electronic / Synthwave</option>
+                            <option value="pop">Pop</option>
+                            <option value="rock">Rock / Metal</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tariffSelect">Тариф *</label>
+                        <select id="tariffSelect" required>
+                            <option value="basic">Basic Drop (5 000 ₸)</option>
+                            <option value="pro">PRO Motion (15 000 ₸)</option>
+                            <option value="full">Full Label Deal (от 35 000 ₸)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="releaseDate">Желаемая дата выхода *</label>
+                        <input type="date" id="releaseDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="audioLink">Ссылка на аудио (WAV / Drive) *</label>
+                        <input type="url" id="audioLink" placeholder="https://drive.google.com/..." required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="coverFile">Загрузить обложку (3000x3000px, JPG/PNG)</label>
+                        <input type="file" id="coverFile" accept="image/png, image/jpeg">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="comments">Комментарий или пожелания к питчингу</label>
+                        <textarea id="comments" rows="4" placeholder="Ссылки на соцсети артиста и т.д."></textarea>
+                    </div>
+                    <div class="form-group full-width checkbox-group">
+                        <input type="checkbox" id="termsCheck" required>
+                        <label for="termsCheck">Я подтверждаю, что обладаю всеми авторскими правами на данный материал.</label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Отправить релиз</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="join-section" id="registration">
+        <div class="join-container">
+            <h2 class="join-title">Стать артистом лейбла</h2>
+            <p class="join-subtitle">Оставьте ваши контакты и портфолио. Мы прослушаем материал и свяжемся с вами.</p>
+            <form class="join-form">
+                <div class="join-grid">
+                    <div class="form-group">
+                        <label for="artistAlias">Псевдоним / Имя *</label>
+                        <input type="text" id="artistAlias" placeholder="например, dmitry_rspkn" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactInfo">Контакты для связи (Telegram / Phone / Email) *</label>
+                        <input type="text" id="contactInfo" placeholder="@username или +7 707 ..." required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="portfolioLink">Ссылка на ваше портфолио (YouTube / SoundCloud / VK / Drive) *</label>
+                        <input type="url" id="portfolioLink" placeholder="https://soundcloud.com/ваше_имя" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="artistBio">Музыкальное резюме или почему ваши дэмки круче дэмок Васи со двора *</label>
+                        <textarea id="artistBio" rows="4" placeholder="Расскажите о своем стиле, опыте написания музыки, выступлениях и творческих планах..." required></textarea>
+                    </div>
+
+                    <div class="form-group full-width checkbox-group">
+                        <input type="checkbox" id="joinConsent" required>
+                        <label for="joinConsent">Я даю согласие на обработку персональных данных и прослушивание моего материала командой лейбла.</label>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="logo">
+            <p>AURUM RECORDS</p>
+        </div>
+        <div class="author">
+            <p>&copy; Дмитрий Рощупкин, IT-2505. Никакие права не защищены</p>
+        </div>
+        <a class="aitu" href="https://astanait.edu.kz/ru" target="_blank">
+            <img src="img/aitu_logo.png" alt="">
+            <p>AITU</p>
+        </a>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

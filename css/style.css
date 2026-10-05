@@ -268,6 +268,214 @@ a, button {
     max-height: 30px;
 }
 
+.contacts-page {
+    padding-top: 70px;
+}
+
+.contacts-page__gallery {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0;
+}
+
+.contacts-page__gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 70vw;
+}
+
+.contacts-page__gallery-photo {
+    overflow: hidden;
+    transition: transform .3s;
+}
+
+.contacts-page__gallery-photo:hover {
+    transform: translateY(-4px);
+}
+
+.photo-super {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+
+.contacts-page__gallery-photo img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform .3s;
+}
+
+.distribution {
+    padding: 30px 15px;
+}
+
+.distro-container {
+    background-color: #0d0d0d;
+    border: 1px solid rgba(255, 239, 204, 0.15);
+    border-radius: 12px;
+    padding: 24px 16px;
+    margin: 0 auto;
+}
+
+.distro-title {
+    font-family: 'Futura SuperXP', sans-serif;
+    color: #ffefcc;
+    font-size: 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.distro-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.distro-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #ffefcc;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select,
+.form-group textarea {
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #ffefcc;
+    box-shadow: 0 0 8px rgba(255, 239, 204, 0.25);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #ffefcc;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.checkbox-group label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #ffefcc;
+    color: #000 !important;
+    font-family: 'Futura SuperXP', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.join-section {
+    padding: 30px 15px;
+}
+
+.join-container {
+    background-color: #0d0d0d;
+    border: 1px solid rgba(255, 239, 204, 0.15);
+    border-radius: 12px;
+    padding: 24px 16px;
+    margin: 0 auto;
+}
+
+.join-title {
+    font-family: 'Futura SuperXP', sans-serif;
+    color: #ffefcc;
+    font-size: 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.join-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.join-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.contacts-page__title {
+    padding: 0 10%;
+    margin-bottom: 50px;
+}
+
+.contacts-page__menu {
+    padding: 0 10%;
+}
+
+.contacts-page__menu-title {
+    margin-bottom: 30px;
+}
+
 @media (min-width: 768px) {
     .artist_cards {
         grid-template-columns: repeat(2, 1fr);
@@ -281,6 +489,41 @@ a, button {
     .about__text {
         padding: 0 8%;
         margin-bottom: 30px;
+    }
+
+    .distro-container {
+        padding: 36px 32px;
+    }
+
+    .distro-title {
+        font-size: 1.8rem;
+    }
+
+    .distro-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .full-width {
+        grid-column: span 2;
+    }
+
+    .submit-btn {
+        width: auto;
+        padding: 12px 48px;
+    }
+
+    .join-container {
+        padding: 36px 32px;
+    }
+
+    .join-title {
+        font-size: 1.8rem;
+    }
+
+    .join-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
@@ -302,5 +545,15 @@ a, button {
     .footer {
         margin-top: 100px;
         padding-bottom: 20px;
+    }
+
+    .distro-container {
+        max-width: 900px;
+        padding: 48px;
+    }
+
+    .join-container {
+        max-width: 800px;
+        padding: 40px 48px;
     }
 }
