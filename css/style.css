@@ -503,6 +503,11 @@ a, button {
     margin-bottom: 30px;
 }
 
+.nav-button:hover {
+    background-color: #262626;
+    text-shadow: 0 0 10px #ffefcc;
+}
+
 @media (min-width: 768px) {
     .artist_cards {
         grid-template-columns: repeat(2, 1fr);
