@@ -192,6 +192,10 @@ a, button {
     padding: 20px;
 }
 
+.artist__card-desc span {
+    text-decoration: line-through;
+}
+
 .artist__card-name {
     font-size: 30px;
     letter-spacing: 2px;
@@ -371,6 +375,13 @@ a, button {
     width: 100%;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="date"] {
+    font-size: 1rem;
+    padding: 12px;
+    min-height: 48px;
+    cursor: pointer;
 }
 
 .form-group input:focus,
