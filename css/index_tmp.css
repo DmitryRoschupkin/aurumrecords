@@ -128,3 +128,12 @@ body {
     transform: var(--main-article-transform);
     will-change: transform;
 }
+
+.navbar {
+    position: fixed;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: #ffefcc !important;
+}
