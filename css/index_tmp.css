@@ -130,10 +130,38 @@ body {
 }
 
 .navbar {
-    position: fixed;
-    z-index: 1000;
+    padding-left: calc(var(--index) * 2);
+    background: rgba(0, 0, 0, 0.8);
+    height: 100px;
+}
+
+.navbar-brand {
+    font-size: calc(var(--index));
+    letter-spacing: calc(var(--index) / 3);
 }
 
 .navbar a {
     color: #ffefcc !important;
+}
+
+.nav-item {
+    font-size: calc(var(--index) / 1.5);
+    letter-spacing: calc(var(--index) / 15);
+}
+
+.navbar__login {
+    font-weight: normal;
+    font-size: calc(var(--index) / 2);
+    letter-spacing: calc(var(--index) / 5);
+    border: 1px solid #ffefcc;
+    border-radius: calc(var(--index) / 1.8);
+    height: fit-content;
+    transition: text-shadow .3s, letter-spacing.3s, background-color .3s, box-shadow .3s;
+}
+
+.navbar__login:hover {
+    text-shadow: 0 0 5px #ffefcc;
+    box-shadow: 0 0 10px #ffefcc;
+    letter-spacing: calc(var(--index) / 4);
+    background-color: #171712;
 }
