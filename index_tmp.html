@@ -39,7 +39,18 @@
             </ul>
         </div>
     </nav>
-    <header class="main-header">
+    <div class="vinyl-navigation" id="vinylNavigation">
+        <div class="vinyl-record" id="vinylRecord">
+            <div class="vinyl-label" id="vinylLabel">
+                <span>A</span>
+            </div>
+        </div>
+
+        <div class="vinyl-section" id="vinylSection">
+            HOME
+        </div>
+    </div>
+    <section class="main-header" data-title="AURUM" id="aurumHeader">
         <div class="layers">
             <div class="layers__header">
                 <div class="layers__title">Aurum Records</div>
@@ -49,16 +60,116 @@
             <div class="layer layers__middle" style="background-image: url(img/zadumalsa_dark_theme.png);"></div>
             <div class="layer layers__front" style="background-image: url(img/zadumalsa_golden.png);"></div>
         </div>
-    </header>
+    </section>
 
-    <article class="main-article" style="background-image: url(img/zoloto_luna.jpeg);">
+    <section class="main-article" style="background-image: url(img/zoloto_luna.jpeg);" data-title="ABOUT" id="about">
         <div class="main-article__content">
-            <h2 class="main-article__header">Aurum Records</h2>
-            <p class="main-article__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aspernatur iste perspiciatis quae!
-                Accusantium adipisci alias aperiam, assumenda consectetur consequuntur ea eligendi expedita fuga
-                harum laudantium maiores maxime nesciunt, sed, tempora totam.</p>
+            <h2 class="main-article__header">Who are we?</h2>
+            <p class="main-article__paragraph">
+                We are the first really grassroots grassroots label from Qosshy city!
+                Anyone can record their tracks at our studios and release a track at any service!
+                Promote your tracks and become a full member of our label and enjoy your creativity!
+            </p>
         </div>
-    </article>
+    </section>
+
+    <section class="container my-5 price" id="price" data-title="PRICE">
+        <h2 class="text-center text-uppercase mb-4">Price list</h2>
+        <p class="text-center text-uppercase">We'll explain the details</p>
+
+        <div class="pricing-block mb-5">
+            <h3 class="h4 mb-3 text-uppercase">Distribution and promotion</h3>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle custom-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Rate</th>
+                        <th scope="col">What includes</th>
+                        <th scope="col">Timeframe</th>
+                        <th scope="col" class="text-end">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="fw-bold">Basic Drop</td>
+                        <td>Release at 30+ streaming services (VK, Yandex, Apple, Spotify), 100% royalty</td>
+                        <td>2–4 days</td>
+                        <td class="price text-end">5 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">PRO Motion</td>
+                        <td>Release + pitching in playlists, promo-support, artist card</td>
+                        <td>5–7 days</td>
+                        <td class="price text-end">15 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Full Label Deal</td>
+                        <td>Max pitching, targeted ad, cover design and PR</td>
+                        <td>Individual</td>
+                        <td class="price text-end">35 000+ ₸</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="pricing-block">
+            <h3 class="h4 mb-3 text-uppercase">Records and work at studio</h3>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle custom-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Service</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Format</th>
+                        <th scope="col" class="text-end">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="fw-bold">Demo/vocal recording</td>
+                        <td>Studio rental with a sound engineer, vocal processing directly</td>
+                        <td>1 hour</td>
+                        <td class="price text-end">7 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Mixing and mastering</td>
+                        <td>Full track processing, vocal tuning, commercial loud sound.</td>
+                        <td>1 track</td>
+                        <td class="price text-end">18 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Custom beat / Production</td>
+                        <td>Writing a unique arrangement beat including all rights</td>
+                        <td>1 track</td>
+                        <td class="price text-end">25 000+ ₸</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Night Pass</td>
+                        <td>Unlimited recording from 23:00 to 07:00 with an engineer.</td>
+                        <td>8 hours</td>
+                        <td class="price text-end">40 000 ₸</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="logo">
+            <p>AURUM RECORDS</p>
+        </div>
+        <div class="author">
+            <p>&copy; Dmitriy Rochshupkin, IT-2505</p>
+            <a href="#">Credentials</a>
+        </div>
+        <a class="aitu" href="https://astanait.edu.kz/ru" target="_blank">
+            <img src="img/aitu_logo.png" alt="">
+            <p>AITU</p>
+        </a>
+    </footer>
+
     <script src="js/index.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
