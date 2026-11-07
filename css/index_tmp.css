@@ -5,21 +5,23 @@
 }
 
 :root {
-    --index: calc(1vw + 1vw);
+    --index: calc(1vw + 1vh);
 }
 
 @font-face {
     font-family: 'Futura SuperXP';
-    src: url('../fonts/FuturaSuperXP-Regular.otf') format('truetype');
+    src: url('../fonts/FuturaSuperXP-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Futura SuperXP';
-    src: url('../fonts/FuturaSuperXP-Bold.otf') format('truetype');
+    src: url('../fonts/FuturaSuperXP-Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
 body {
@@ -290,4 +292,208 @@ body {
     letter-spacing: 2px;
     white-space: nowrap;
     text-transform: uppercase;
+}
+
+@media (width <= 800px) {
+    .vinyl-navigation {
+        display: none;
+    }
+
+    .navbar {
+        height: 80px;
+        padding: 0 25px;
+    }
+
+    .navbar-brand {
+        font-size: clamp(16px, 2.5vw, 22px);
+    }
+
+    .navbar-toggler {
+        border-color: #ffefcc;
+    }
+
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.96);
+        padding: 15px 25px;
+        border: 1px solid rgba(255, 239, 204, 0.15);
+    }
+
+    .navbar-nav {
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .nav-item {
+        font-size: 15px;
+    }
+
+    .navbar__login {
+        margin: 10px 0 !important;
+        padding: 0 15px;
+        font-size: 13px;
+    }
+
+    .layers {
+        height: 90vh;
+        min-height:550px;
+    }
+
+    .layers__header {
+        padding: 0 25px;
+    }
+
+    .layers__title {
+        font-size: clamp(32px, 5vw, 48px);
+        letter-spacing: 5px;
+    }
+
+    .layers__caption {
+        font-size: clamp(12px, 2vw, 16px);
+    }
+
+    .main-article {
+        min-height: 80vh;
+        padding: 100px 40px;
+        text-align: center;
+    }
+
+    .main-article__content {
+        max-width: 600px;
+    }
+
+    .main-article__header {
+        font-size: clamp(28px, 5vw, 42px);
+        letter-spacing: 4px;
+    }
+
+    .main-article__paragraph {
+        max-width: 100%;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    .price {
+        margin-top: 60px !important;
+    }
+
+    .pricing-block h3 {
+        font-size: 18px;
+    }
+
+    .custom-table {
+        font-size: 13px;
+    }
+
+    .footer {
+        padding: 0 20px 30px;
+    }
+}
+
+@media (width <= 400px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        height: 70px;
+        padding: 0 15px;
+    }
+
+    .navbar-brand {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .navbar-toggler {
+        padding: 5px 8px;
+    }
+
+    .navbar-collapse {
+        margin: 0 -15px;
+        padding: 15px;
+    }
+
+    .nav-item {
+        font-size: 14px;
+    }
+
+    .layers {
+        height: 85svh;
+        min-height: 500px;
+    }
+
+    .layers__header {
+        padding: 0 20px;
+    }
+
+    .layers__title {
+        font-size: clamp(27px, 8vw, 34px);
+        letter-spacing: 3px;
+    }
+
+    .layers__caption {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    .main-article {
+        min-height: 75svh;
+        padding: 100px 22px;
+    }
+
+    .main-article__header {
+        font-size: 26px;
+        letter-spacing: 2px;
+    }
+
+    .main-article__paragraph {
+        font-size: 14px;
+        line-height: 1.8;
+        letter-spacing: 0.2px;
+    }
+
+    .price {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .price h2 {
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+
+    .pricing-block h3 {
+        font-size: 16px;
+    }
+
+    .custom-table {
+        font-size: 12px;
+    }
+
+    .custom-table th,
+    .custom-table td {
+        padding: 8px 6px;
+    }
+
+    .footer {
+        padding: 0 15px 25px;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .author {
+        font-size: 12px;
+    }
+
+    .aitu p {
+        font-size: 13px;
+    }
 }
