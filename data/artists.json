@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Friendly Thug 52",
+    "genre": "Hip-Hop",
+    "description": "True OG from Saint-Petersburg. 52!",
+    "image": "img/artists/thug.jpg",
+    "alt": "Friendly Thug 52 artist portrait"
+  },
+  {
+    "id": 2,
+    "name": "Husky",
+    "genre": "Hip-Hop / Experimental",
+    "description": "Poet of modern rap. Distinctive and provocative!",
+    "image": "img/artists/husky.jpeg",
+    "alt": "Husky"
+  },
+  {
+    "id": 3,
+    "name": "Avtosport",
+    "genre": "Indie Rock",
+    "description": "AIndie-Shoegaze band from Moscow.",
+    "image": "img/artists/avtosport.jpeg",
+    "alt": "Avtosport"
+  },
+  {
+    "id": 4,
+    "name": "Buerak",
+    "genre": "Post-Punk",
+    "description": "A post-punk sound.",
+    "image": "img/artists/buerak.jpg",
+    "alt": "Buerak"
+  },
+  {
+    "id": 5,
+    "name": "Goodnight Kisses",
+    "genre": "Alternative",
+    "description": "An alternative grungegaze.",
+    "image": "img/artists/gk.jpg",
+    "alt": "Goodnight Kisses - artist portrait"
+  },
+  {
+    "id": 6,
+    "name": "Mnogoznaal",
+    "genre": "Hip-Hop",
+    "description": "An unique norther sound.",
+    "image": "img/artists/mnogoznaal.jpeg",
+    "alt": "Mnogoznaal - artist portrait"
+  },
+  {
+    "id": 7,
+    "name": "Dolphin",
+    "genre": "Alternative / Electronic",
+    "description": "An alternative and electronic direction in the Aurum Records selection.",
+    "image": "img/artists/dolphin.jpg",
+    "alt": "Dolphin"
+  },
+  {
+    "id": 8,
+    "name": "Onda Andar",
+    "genre": "Alternative",
+    "description": "An alternative selection!",
+    "image": "img/artists/onda.jpg",
+    "alt": "Onda Andar"
+  },
+  {
+    "id": 9,
+    "name": "dmitry_rspkn",
+    "genre": "Independent",
+    "description": "An independent artist from Qosshy.",
+    "image": "img/artists/rspkn.jpg",
+    "alt": "dmitry_rspkn"
+  }
+]
