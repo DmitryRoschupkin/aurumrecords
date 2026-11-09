@@ -137,6 +137,7 @@ body {
     padding-left: calc(var(--index) * 2);
     background: rgba(0, 0, 0, 0.8);
     height: 100px;
+    backdrop-filter: blur(5px);
 }
 
 .navbar-brand {
@@ -153,6 +154,17 @@ body {
     letter-spacing: calc(var(--index) / 15);
     will-change: transform, text-shadow;
     transition: transform .2s, text-shadow .2s;
+}
+
+.nav-item.active {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    transform: scale(1.2);
+    color: #ffe2a6
+}
+
+.nav-item.active .nav-link{
+    color: #ffe2a6 !important;
 }
 
 .nav-item:hover {

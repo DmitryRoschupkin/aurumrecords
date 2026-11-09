@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index_tmp.css">
-    <title>Registration</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="shortcut icon" href="img/aurumicon.png" type="image/png">
+    <title>Aurum Login</title>
     <script src="https://jquery.com"></script>
 </head>
-<body>
+    <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <a href="index.html" class="navbar-brand text-uppercase">Aurum Records</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -18,7 +20,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto fw-bold">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
@@ -40,6 +42,47 @@
         </div>
     </nav>
 
+    <main class="auth__main">
+        <div class="auth-poster">
+            <img src="img/aurum_poster.jpg" alt="Our label's poster">
+        </div>
+        <div class="auth-form reg">
+            <form class="form reg">
+                <div class="form-group reg">
+                    <label for="fullname">Your full name</label>
+                    <input type="text" minlength="1" maxlength="30" class="form-control" id="fullname" placeholder="Innokenty Imgrunt" required>
+                    <div class="invalid-feedback" id="fullname-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="nickname">Your nickname</label>
+                    <input type="text" minlength="1" maxlength="30" class="form-control" id="nickname" placeholder="supervasya_228" required>
+                    <div class="invalid-feedback" id="nickname-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="sample@dmitriy.com" required>
+                    <div class="invalid-feedback" id="email-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" minlength="1" maxlength="20" placeholder="Password" required>
+                    <div class="invalid-feedback" id="password-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirm">Password</label>
+                    <input type="password" class="form-control" id="passwordConfirm" minlength="1" maxlength="20" placeholder="Confirm password" required>
+                    <div class="invalid-feedback" id="passwordConfirm-error"></div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+            <div class="auth-redirect">
+                <h3 class="auth-redirect__text">Already have an account? <a class="auth-redirect__link" href="login.html">Log in!</a></h3>
+            </div>
+        </div>
+    </main>
+
 
     <footer class="footer">
         <div class="logo">
@@ -55,6 +98,7 @@
         </a>
     </footer>
     <script src="js/index.js" defer></script>
+    <script src="js/auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    </body>
 </html>
