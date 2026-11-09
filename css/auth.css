@@ -130,3 +130,22 @@
     border: 1px solid #00b900;
     box-shadow: 0 0 10px rgba(0, 185, 0, .4);
 }
+
+@media (width <= 800px) {
+    .auth-poster {
+        display: none;
+    }
+
+    .auth-redirect__link {
+        display: block;
+    }
+
+    .auth-redirect {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .auth-redirect__text {
+        font-size: calc(var(--index));
+    }
+}

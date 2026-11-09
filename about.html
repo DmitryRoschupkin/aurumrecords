@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index_tmp.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="shortcut icon" href="img/aurumicon.png" type="image/png">
     <title>About</title>
-    <script src="https://jquery.com"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -45,9 +46,64 @@
         </div>
     </div>
 
-    <section data-title="main">
+    <main class="about-main">
+        <section class="about-header" data-title="ABOUT" style="background-image: url('img/studio.jpg')">
+            <h1 class="about-header__title">Here you can learn more about what we do</h1>
+            <div class="about-header__navigation">
+                <a href="#artists">Our artists</a>
+                <a href="#releases">Best releases</a>
+                <a href="#studios">Our studios</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </section>
 
-    </section>
+        <section class="artists" id="artists" data-title="ARTISTS">
+            <div class="artists__header">
+                <h2>Our Artists</h2>
+                <p>Meet the voices behind the sound.</p>
+            </div>
+
+            <div class="artists-grid" id="artistsGrid">
+
+            </div>
+        </section>
+
+        <section class="releases" id="releases" data-title="RELEASES">
+            <div class="releases__header">
+                <h2>Selected Tracks</h2>
+                <p id="tracksCount">0 tracks</p>
+            </div>
+            <div class="releases__controls">
+                <input class="track-search" id="trackSearch" type="search"
+                       placeholder="Search tracks or artists" aria-label="Search tracks or artists">
+                <select class="track-sort" id="trackSort" aria-label="Sort tracks by release date">
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
+                </select>
+            </div>
+            <p class="tracks-status" id="tracksStatus" aria-live="polite"></p>
+            <div class="tracks-grid" id="tracksGrid"></div>
+        </section>
+
+        <section class="studios" id="studios" data-title="STUDIOS">
+            <div class="studios__header"><h2>Our Studios</h2></div>
+            <div id="studiosCarousel" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-indicators" id="studiosCarouselIndicators"></div>
+                <div class="carousel-inner" id="studiosCarouselContent"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#studiosCarousel" data-bs-slide="prev" aria-label="Previous studio">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#studiosCarousel" data-bs-slide="next" aria-label="Next studio">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </section>
+
+        <section class="faq" id="faq" data-title="FAQ">
+            <div class="faq__header"><h2>Frequently Asked Questions</h2></div>
+            <div class="accordion" id="faqAccordion"></div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="logo">
@@ -63,6 +119,8 @@
         </a>
     </footer>
     <script src="js/index.js" defer></script>
+    <script src="js/about.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "The Recording Room",
+    "description": "A dedicated space for recording vocals and instruments.",
+    "image": "img/studios/repa.jpg",
+    "alt": "Recording room at Aurum Records"
+  },
+  {
+    "id": 2,
+    "name": "The Mixing Suite",
+    "description": "A focused environment for mixing and sound refinement.",
+    "image": "img/studios/stud1.jpg",
+    "alt": "Mixing suite at Aurum Records"
+  },
+  {
+    "id": 3,
+    "name": "The Live Room",
+    "description": "A flexible room for rehearsals and live takes.",
+    "image": "img/studios/stud2.jpg",
+    "alt": "Live room at Aurum Records"
+  }
+]

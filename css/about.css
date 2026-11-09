@@ -1,0 +1,278 @@
+.about-header {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-header__title {
+    font-size: 4rem;
+    letter-spacing: calc(var(--index) / 10);
+    text-shadow: 0 0 10px black;
+}
+
+.about-header__navigation {
+    display: flex;
+    gap: 30px;
+    font-size: calc(var(--index));
+}
+
+.about-header__navigation a {
+    color: white;
+    transition: all .2s;
+}
+
+.about-header__navigation a:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px white;
+}
+
+.artists,
+.releases,
+.studios,
+.faq {
+    padding: 90px max(5vw, 20px);
+    color: #ffefcc;
+}
+
+.artists__header,
+.releases__header,
+.studios__header,
+.faq__header {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.artists__header h2,
+.releases__header h2,
+.studios__header h2,
+.faq__header h2 {
+    color: #d4af70;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.artist-card,
+.track-card {
+    min-width: 0;
+    overflow: hidden;
+    background: #101010;
+    border: 1px solid rgba(212, 175, 112, .25);
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.artist-card:hover,
+.track-card:hover {
+    transform: translateY(-6px);
+    border-color: #d4af70;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .3);
+}
+
+.artist-card__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.artist-card__content,
+.track-card__content {
+    padding: 20px;
+}
+
+.artist-card__genre {
+    margin-bottom: 8px;
+    color: #d4af70;
+    font-size: .75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.artist-card__name,
+.track-card__title {
+    color: #ffefcc;
+    font-size: 1.25rem;
+}
+
+.artist-card__description,
+.track-card__artist,
+.track-card__date {
+    color: rgba(255, 239, 204, .72);
+}
+
+.artist-card__button {
+    margin-top: 12px;
+    padding: 10px 16px;
+    color: #ffda89;
+    background: transparent;
+    border: 1px solid #b08d4f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color .25s ease, background .25s ease, transform .25s ease;
+}
+
+.artist-card__button:hover {
+    color: #080808;
+    background: #d4af70;
+    transform: translateY(-2px);
+}
+
+.artist-card__button:focus-visible,
+.track-search:focus-visible,
+.track-sort:focus-visible,
+.carousel-control-prev:focus-visible,
+.carousel-control-next:focus-visible,
+.accordion-button:focus-visible {
+    outline: 2px solid #ffda89;
+    outline-offset: 4px;
+    box-shadow: none;
+}
+
+.releases__controls {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.track-search,
+.track-sort {
+    width: min(100%, 320px);
+    padding: 11px 14px;
+    color: #ffefcc;
+    background: #101010;
+    border: 1px solid rgba(212, 175, 112, .5);
+}
+
+.track-search::placeholder {
+    color: rgba(255, 239, 204, .55);
+}
+
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.track-card__cover {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.track-card__title {
+    font-size: 1rem;
+}
+
+.track-card__artist,
+.track-card__date {
+    margin-bottom: 5px;
+    font-size: .85rem;
+}
+
+.track-card.highlighted {
+    border: 1px solid #ffda89;
+    box-shadow: 0 0 22px rgba(255, 218, 137, 0.35);
+    transform: translateY(-5px);
+}
+
+.tracks-status,
+.empty-state,
+#aboutStatus {
+    margin: 18px 0;
+    color: #d4af70;
+    text-align: center;
+}
+
+.studio-slide__image {
+    height: min(65vh, 600px);
+    object-fit: cover;
+    filter: brightness(.65);
+}
+
+.studio-slide__caption {
+    text-shadow: 0 2px 12px #000;
+}
+
+.studio-slide__caption h3 {
+    color: #ffda89;
+}
+
+#faqAccordion .accordion-item {
+    color: #ffefcc;
+    background: #101010;
+    border: 1px solid rgba(212, 175, 112, .25);
+}
+
+#faqAccordion .accordion-button {
+    color: #ffefcc;
+    background: #101010;
+    font-weight: 600;
+}
+
+#faqAccordion .accordion-button:not(.collapsed) {
+    color: #ffda89;
+    background: #211b12;
+    box-shadow: none;
+}
+
+#faqAccordion .accordion-button::after {
+    filter: invert(80%) sepia(25%) saturate(550%) hue-rotate(350deg);
+}
+
+#faqAccordion .accordion-body {
+    color: rgba(255, 239, 204, .8);
+    line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+    .artists-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tracks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .artists, .releases, .studios, .faq { padding: 70px 25px; }
+}
+
+@media (max-width: 400px) {
+    .artists-grid,
+    .tracks-grid { grid-template-columns: minmax(0, 1fr); }
+
+    .artists, .releases, .studios, .faq { padding: 55px 16px; }
+
+    .releases__controls {
+        flex-direction: column;
+    }
+
+    .track-search,
+    .track-sort {
+        width: 100%;
+    }
+
+    .artist-card__content,
+    .track-card__content {
+        padding: 15px;
+    }
+
+    .studio-slide__image {
+        height: 300px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}

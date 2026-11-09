@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "How can an artist contact Aurum Records?",
+    "answer": "Use the contact form on the Contacts page and include links to your music and a short introduction."
+  },
+  {
+    "id": 2,
+    "question": "What should I include in a demo submission?",
+    "answer": "Send a few finished tracks, your artist name, genre, and links to your public music profiles."
+  },
+  {
+    "id": 3,
+    "question": "Does Aurum Records work with different genres?",
+    "answer": "The catalogue brings together different musical directions. The most important thing is a clear artistic identity and a considered sound."
+  },
+  {
+    "id": 4,
+    "question": "Can I collaborate with an artist from the catalogue?",
+    "answer": "For collaboration enquiries, contact the label and describe the artist, project, and proposed format."
+  },
+  {
+    "id": 5,
+    "question": "Where can I listen to the releases?",
+    "answer": "Check the Releases page for the catalogue and the listening links provided with each release."
+  },
+  {
+    "id": 6,
+    "question": "How can I ask a question that is not listed here?",
+    "answer": "Visit the Contacts page and send your question through the contact form."
+  }
+]

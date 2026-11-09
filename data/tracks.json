@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "title": "Recorm Me / 4Humble",
+    "artistId": 1,
+    "releaseDate": "2025-04-25",
+    "cover": "img/covers/mothe_christo.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 2,
+    "title": "Sold Out",
+    "artistId": 1,
+    "releaseDate": "2023-11-03",
+    "cover": "img/covers/colombo.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 3,
+    "title": "Песня о привязанности",
+    "artistId": 3,
+    "releaseDate": "2018-10-01",
+    "cover": "img/covers/beregi_sebja.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 4,
+    "title": "Пятый день недели",
+    "artistId": 3,
+    "releaseDate": "2017-12-17",
+    "cover": "img/covers/fifth_day.png",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 5,
+    "title": "Спортивные очки",
+    "artistId": 4,
+    "releaseDate": "2018-06-29",
+    "cover": "img/covers/gold.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 6,
+    "title": "Не станет хитом",
+    "artistId": 4,
+    "releaseDate": "2020-12-25",
+    "cover": "img/covers/ne_stanet_hitom.png",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 7,
+    "title": "Весна",
+    "artistId": 7,
+    "releaseDate": "2004-03-22",
+    "cover": "img/covers/vesna.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 8,
+    "title": "Крылья",
+    "artistId": 7,
+    "releaseDate": "2000-11-23",
+    "cover": "img/covers/plavniki.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 9,
+    "title": "В твоих снах",
+    "artistId": 5,
+    "releaseDate": "2026-02-27",
+    "cover": "img/covers/v_tvoih_snakh.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 10,
+    "title": "Осень",
+    "artistId": 5,
+    "releaseDate": "2026-02-27",
+    "cover": "img/covers/v_tvoih_snakh.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 11,
+    "title": "Панелька",
+    "artistId": 2,
+    "releaseDate": "2017-03-31",
+    "cover": "img/covers/lpvl.png",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 12,
+    "title": "Музыка рай",
+    "artistId": 2,
+    "releaseDate": "2025-11-28",
+    "cover": "img/covers/partizan.png",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 13,
+    "title": "DOF",
+    "artistId": 6,
+    "releaseDate": "2019-03-08",
+    "cover": "img/covers/dof.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 14,
+    "title": "Гостиница Космос",
+    "artistId": 6,
+    "releaseDate": "2018-01-18",
+    "cover": "img/covers/kosmos.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 15,
+    "title": "sleep mode",
+    "artistId": 8,
+    "releaseDate": "2026-02-13",
+    "cover": "img/covers/onda.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 16,
+    "title": "herons",
+    "artistId": 8,
+    "releaseDate": "2026-02-13",
+    "cover": "img/covers/onda.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 17,
+    "title": "Ghoul 29",
+    "artistId": 9,
+    "releaseDate": "2025-12-20",
+    "cover": "img/covers/ghoul29.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  },
+  {
+    "id": 18,
+    "title": "kolutonsky tape",
+    "artistId": 9,
+    "releaseDate": "2026-03-20",
+    "cover": "img/covers/kolutonsky.jpg",
+    "coverAlt": "Cover artwork for Verified track title"
+  }
+]
