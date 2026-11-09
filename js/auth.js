@@ -1,133 +1,199 @@
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const NICK_RE = /^[a-zA-Z0-9_.]{3,20}$/;
+const NAME_RE = /^[\p{L}'-]+(\s+[\p{L}'-]+)+$/u;
+
+const validators =  {
+    fullname(value) {
+        if (!value) return "Please, enter your full name.";
+        if (!NAME_RE.test(value)) return "Enter first and last name, letters only.";
+        return "";
+    },
+    nickname(value) {
+        if (!value) return "Please, enter a nickname.";
+        if (!NICK_RE.test(value)) return "3-20 characters: latin letters, digits, _ or .";
+        return "";
+    },
+    email(value) {
+        if (!value) return "Please, enter an email.";
+        if (!EMAIL_RE.test(value)) return "Enter a valid email, e.g. name@example.com.";
+        return "";
+    },
+    password(value) {
+        if (!value) return "Enter your password.";
+        if (value.length < 8) return "Password must be at least 8 characters.";
+        if (!/[a-zA-Z]/.test(value) || !/\d/.test(value)) {
+            return "Password must contain at least one letter and one digit.";
+        }
+        return "";
+    },
+    passwordConfirm(value, form) {
+        if (!value) return "Confirm your password.";
+        if (value !== form.elements.password.value) return "Passwords do not match.";
+        return "";
+    }
+};
+
+const loginValidators = {
+    email: validators.email,
+    password(value) {
+        return value ? "" : "Enter your password.";
+    }
+};
+
+function getErrorBox(input) {
+    let box = document.getElementById(`${input.id}-error`);
+    if (!box) {
+        box = document.createElement("div");
+        box.id = `${input.id}-error`;
+        box.className = "invalid-feedback";
+        input.insertAdjacentElement("afterend", box);
+    }
+    box.setAttribute("role", "alert");
+    input.setAttribute("aria-describedby", box.id);
+    return box;
+}
+
+function showError(input, message) {
+    input.classList.add("is-invalid");
+    input.setAttribute("aria-invalid", true);
+    getErrorBox(input).textContent = message;
+}
 const regForm = document.querySelector(".auth-form.reg form, .auth-form form");
 const fullnameInput = document.getElementById("fullname");
 
-function showError(inputElement, message) {
-    inputElement.classList.add("is-invalid");
-    const errorDiv = document.getElementById(`${inputElement.id}-error`);
-    if (errorDiv) {
-        errorDiv.textContent = message;
+
+function clearError(input) {
+    input.classList.remove("is-invalid");
+    input.removeAttribute("aria-invalid");
+    getErrorBox(input).textContent = "";
+}
+
+function clearAllErrors(form) {
+    form.querySelectorAll(".form-control").forEach(clearError);
+}
+
+function showStatus(message, type) {
+    const status = document.getElementById("form-status");
+    if (!status) return;
+    status.textContent = message;
+    status.className = `form-status form-status--${type}`;
+}
+
+function validateField(input, form, rules) {
+    const rule = rules[input.id];
+    if (!rule) return true;
+    const value = input.id.startsWith("password") ? input.value : input.value.trim();
+    const message = rule(value, form);
+    if (message) {
+        showError(input, message);
+        return false;
+    }
+    clearError(input);
+    return true;
+}
+
+function validateForm(form, rules) {
+    let firstInvalid = null;
+    Object.keys(rules).forEach(id => {
+        const input = form.elements[id];
+        if (!validateField(input, form, rules) && !firstInvalid) {
+            firstInvalid = input;
+        }
+    });
+
+    if (firstInvalid) firstInvalid.focus();
+    return !firstInvalid;
+}
+
+function attachLiveValidation(form, rules) {
+    Object.keys(rules).forEach(id => {
+        const input = form.elements[id];
+        input.addEventListener("input", () => {
+            if (input.classList.contains("is-invalid")) {
+                validateField(input, form, rules);
+            }
+
+            if (id === "password" && form.elements.passwordConfirm?.classList.contains("is-invalid")) {
+                validateField(form.elements.passwordConfirm(), form, rules);
+            }
+        });
+    })
+}
+
+function getUsers() {
+    try {
+        return JSON.parse(localStorage.getItem("users")) || [];
+    } catch {
+        return [];
     }
 }
 
-function clearErrors(form) {
-    const inputs = form.querySelectorAll(".form-control");
-    inputs.forEach(input => {
-        input.classList.remove("is-invalid");
-        const errorDiv = document.getElementById(`${input.id}-error`);
-        if (errorDiv) {
-            errorDiv.textContent = "";
-        }
-    });
-}
+function initRegistration(form) {
+    attachLiveValidation(form, validators);
 
-if (fullnameInput) {
-    regForm.addEventListener("submit", (e) => {
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        clearErrors(regForm);
+        showStatus("", "");
 
-        const nicknameInput = document.getElementById("nickname");
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("password");
-        const passwordConfirmInput = document.getElementById("passwordConfirm");
+        if (!validateForm(form, validators)) return;
 
-        let isValid = true;
+        const email = form.elements.email.value.trim().toLowerCase();
+        const users = getUsers();
 
-        const fullname = fullnameInput.value.trim();
-        const nickname = nicknameInput.value.trim();
-        const email = emailInput.value.trim();
-        const password = passwordInput.value;
-        const passwordConfirm = passwordConfirmInput.value;
-
-        if (!fullname) {
-            showError(fullnameInput, "Please, enter a fullname");
-            isValid = false;
-        }
-
-        if (!nickname) {
-            showError(nicknameInput, "Please, enter a nickname");
-            isValid = false;
-        }
-
-        if (!email) {
-            showError(emailInput, "Please, enter an email.");
-            isValid = false;
-        } else if (!email.includes("@")) {
-            showError(emailInput, "Please, enter a valid email (must include @).");
-            isValid = false;
-        }
-
-        if (!password) {
-            showError(passwordInput, "Enter your password.");
-            isValid = false;
-        } else if (password.length < 6) {
-            showError(passwordInput, "Password must be at least 6 characters.");
-            isValid = false;
-        }
-
-        if (!passwordConfirm) {
-            showError(passwordConfirmInput, "Confirm your password.");
-            isValid = false;
-        } else if (password !== passwordConfirm) {
-            showError(passwordConfirmInput, "Passwords do not match.");
-            isValid = false;
-        }
-
-        if (!isValid) return;
-
-        let users = JSON.parse(localStorage.getItem("users")) || [];
-        const existingUser = users.find(u => u.email === email);
-        if (existingUser) {
-            alert("User already exists!");
+        if (users.some(u => u.email === email)) {
+            showError(form.elements.email, "This email is already registered.");
+            form.elements.email.focus();
             return;
         }
 
-        const newUser = {
-            fullname, nickname, email, password
-        };
+        users.push({
+            fullname: form.elements.fullname.value.trim(),
+            nickname: form.elements.nickname.value.trim(),
+            email,
+            password: form.elements.password.value,
+        });
 
-        users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
 
-        alert("Successfully logged in!");
-        window.location.href = "login.html";
+        form.reset();
+        clearAllErrors(form);
+        showStatus("Account created! Redirecting to login...", "success");
+        form.querySelector("button[type=submit]").disabled = true;
+        setTimeout(() => {window.location.href = "login.html";}, 1500);
     });
-} else {
-    const loginForm = document.querySelector(".auth-form form");
-    if (loginForm) {
-        loginForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            clearErrors(loginForm);
+}
 
-            const emailInput = document.getElementById("email");
-            const passwordInput = document.getElementById("password");
+function initLogin(form) {
+    attachLiveValidation(form, loginValidators);
 
-            let isValid = true;
-            const email = emailInput.value.trim();
-            const password = passwordInput.value;
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        showStatus("", "");
+        if (!validateForm(form, loginValidators)) return;
 
-            if (!email) {
-                showError(emailInput, "Enter an email.");
-                isValid = false;
-            }
+        const email = form.elements.email.value.trim().toLowerCase();
+        const password = form.elements.password.value;
+        const user = getUsers().find(u => u.email === email && u.password === password);
 
-            if (!password) {
-                showError(passwordInput, "Enter your password.");
-                isValid = false;
-            }
+        if (!user) {
+            showError(form.elements.email, "Incorrect email or password.");
+            showError(form.elements.password, "Incorrect email or password.");
+            form.elements.email.focus();
+            return;
+        }
 
-            if (!isValid) return;
+        localStorage.setItem("current_user", JSON.stringify(user));
+        form.reset();
+        clearAllErrors(form);
+        showStatus(`Welcome, ${user.nickname}! Redirecting...`, "success");
+        form.querySelector("button[type=submit]").disabled = true;
+        setTimeout(() => { window.location.href = "index.html"; }, 1000);
 
-            const users = JSON.parse(localStorage.getItem("users")) || [];
-            const user = users.find(u => u.email === email && u.password === password);
+    });
+}
 
-            if (user) {
-                localStorage.setItem("current_user", JSON.stringify(user));
-                alert(`Welcome, ${ user.nickname }!`);
-                window.location.href = "index.html";
-            } else {
-                showError(emailInput, "Incorrect email or password.");
-                showError(passwordInput, "Incorrect email or password.");
-            }
-        });
-    }
+const authForm = document.querySelector(".auth-form form");
+if (authForm) {
+    if (authForm.elements.fullname) initRegistration(authForm);
+    else initLogin(authForm);
 }

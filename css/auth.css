@@ -84,3 +84,49 @@
 .auth-redirect__link:hover {
     color: #089ab3;
 }
+
+.form-group input,
+.form-group .invalid-feedback {
+    scroll-margin-top: 120px;
+}
+
+.form-group input.is-invalid {
+    background-image: none;
+    border-color: #ff5a4d;
+    box-shadow: 0 0 8px rgba(255, 90, 77, .6);
+}
+
+
+.form-group input.is-invalid:focus {
+    border-color: #ff5a4d;
+    box-shadow: 0 0 12px #ff5a4d;
+}
+
+.form-group .invalid-feedback {
+    display: block;
+    color: #ff7b6e;
+    font-size: calc(var(--index) / 1.7);
+    text-transform: none;
+    letter-spacing: normal;
+    margin-top: 0;
+}
+
+.form-group .invalid-feedback:empty {
+    display: none;
+}
+
+.form-status {
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-transform: none;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status--success {
+    color: #00b900;
+    border: 1px solid #00b900;
+    box-shadow: 0 0 10px rgba(0, 185, 0, .4);
+}
