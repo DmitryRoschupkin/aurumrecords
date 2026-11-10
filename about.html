@@ -28,6 +28,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contacts.html">Contacts</a>
                 </li>
+                <li class="nav-item">
+                    <button
+                            class="nav-link favorites-trigger"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#favoritesModal"
+                            aria-label="Open liked tracks">
+
+                        <span aria-hidden="true">♥</span>
+                        <span id="favoritesCount">0</span>
+                    </button>
+                </li>
                 <li class="nav-item navbar__login mx-5 my-1 text-uppercase px-2">
                     <a class="nav-link" href="login.html">Login</a>
                 </li>
@@ -118,8 +130,53 @@
             <p>AITU</p>
         </a>
     </footer>
+    <div
+            class="modal fade"
+            id="favoritesModal"
+            tabindex="-1"
+            aria-labelledby="favoritesModalTitle"
+            aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+
+            <div class="modal-content favorites-modal-content">
+
+                <div class="modal-header">
+                    <h2 class="modal-title" id="favoritesModalTitle">
+                        Your Liked Tracks
+                    </h2>
+
+                    <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div id="favoritesList" class="favorites-list">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                            type="button"
+                            class="btn favorites-close-btn"
+                            data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <script src="js/index.js" defer></script>
     <script src="js/about.js" defer></script>
+    <script src="js/favorites.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>

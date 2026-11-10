@@ -27,8 +27,10 @@ async function initAboutPage() {
         renderTracks(tracks);
         renderStudios(studios);
         renderFaq(faqItems);
+
         setupTrackControls();
         setupArtistTrackNavigation();
+        setupFavorites();
     } catch (error) {
         console.error("Could not load About page data:", error);
         showPageError("Some page content could not be loaded. Please check the JSON paths and run the site through a local server.");
@@ -134,8 +136,25 @@ function renderTracks(items) {
         const artistName = createElement("p", "track-card__artist", artist ? artist.name : "Unknown artist");
         const date = createElement("time", "track-card__date", formatDate(track.releaseDate));
         date.dateTime = track.releaseDate;
+        const likeButton = createElement(
+            "button",
+            "track-card__like",
+            isTrackLiked(track.id) ? "♥" : "♡"
+        );
 
-        content.append(title, artistName, date);
+        likeButton.type = "button";
+        likeButton.dataset.likeTrackId = String(track.id);
+
+        const liked = isTrackLiked(track.id);
+
+        likeButton.classList.toggle("is-liked", liked);
+        likeButton.setAttribute("aria-pressed", String(liked));
+        likeButton.setAttribute(
+            "aria-label",
+            `${liked ? "Remove" : "Add"} ${track.title} ${liked ? "from" : "to"} favorites`
+        );
+
+        content.append(title, artistName, date, likeButton);
         card.append(image, content);
         grid.append(card);
     });
