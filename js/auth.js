@@ -114,7 +114,7 @@ function attachLiveValidation(form, rules) {
             }
 
             if (id === "password" && form.elements.passwordConfirm?.classList.contains("is-invalid")) {
-                validateField(form.elements.passwordConfirm(), form, rules);
+                validateField(form.elements.passwordConfirm, form, rules);
             }
         });
     })
@@ -123,6 +123,13 @@ function attachLiveValidation(form, rules) {
 function getUsers() {
     try {
         return JSON.parse(localStorage.getItem("users")) || [];
+
+        return users.map(user => ({
+            ...user,
+            likedTracks: Array.isArray(user.likedTracks)
+                ? user.likedTracks
+                : []
+        }));
     } catch {
         return [];
     }
@@ -151,6 +158,7 @@ function initRegistration(form) {
             nickname: form.elements.nickname.value.trim(),
             email,
             password: form.elements.password.value,
+            likedTracks: []
         });
 
         localStorage.setItem("users", JSON.stringify(users));

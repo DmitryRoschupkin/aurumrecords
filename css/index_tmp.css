@@ -711,6 +711,169 @@ body {
     scroll-margin-top: 120px;
 }
 
+.credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 150px;
+    padding: 0 50px;
+    color: #ffefcc;
+    margin-bottom: 50px;
+    max-width: 100vw;
+}
+
+.credentials h1 {
+    letter-spacing: 2px;
+}
+
+.sources {
+    display: flex;
+    flex-direction: column;
+}
+
+.favorites-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffefcc !important;
+    transition: color 0.2s ease;
+}
+
+.favorites-trigger:hover {
+    color: #d4af70 !important;
+}
+
+.favorites-trigger span:first-child {
+    color: #d4af70;
+    font-size: 1.3rem;
+}
+
+#favoritesCount {
+    font-size: 0.85rem;
+}
+
+
+.track-card__like {
+    background: transparent;
+    border: none;
+    color: #ffefcc;
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.track-card__like:hover {
+    color: #d4af70;
+    transform: scale(1.15);
+}
+
+.track-card__like.is-liked {
+    color: #d4af70;
+}
+
+.favorites-modal-content {
+    background: #10100f;
+    color: #ffefcc;
+    border: 1px solid #b08d4f;
+    border-radius: 14px;
+}
+
+.favorites-modal-content .modal-header,
+.favorites-modal-content .modal-footer {
+    border-color: rgba(212, 175, 112, 0.25);
+}
+
+.favorites-modal-content .modal-title {
+    color: #d4af70;
+}
+
+.favorites-modal-content .btn-close {
+    filter: invert(1);
+}
+
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.favorite-track {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid rgba(212, 175, 112, 0.2);
+    border-radius: 10px;
+}
+
+.favorite-track img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.favorite-track__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.favorite-track__info h3 {
+    font-size: 1rem;
+    margin: 0 0 5px;
+    color: #ffefcc;
+}
+
+.favorite-track__info p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #b08d4f;
+}
+
+.favorite-track__remove {
+    border: none;
+    background: transparent;
+    color: #d4af70;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.favorite-track__remove:hover {
+    transform: scale(1.2);
+    color: #ffefcc;
+}
+
+.favorites-close-btn {
+    border: 1px solid #d4af70;
+    color: #ffefcc;
+}
+
+.favorites-close-btn:hover {
+    background: #d4af70;
+    color: #10100f;
+}
+
+@media (max-width: 576px) {
+    .favorite-track img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .favorite-track__info h3 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .favorites-trigger,
+    .track-card__like,
+    .favorite-track__remove {
+        transition: none;
+    }
+}
+
+
 @media (max-width: 800px) {
     .contacts-page {
         padding: 140px 25px 70px;
