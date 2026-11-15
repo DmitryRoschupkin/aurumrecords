@@ -7,93 +7,112 @@
     <link rel="stylesheet" href="css/index_tmp.css">
     <link rel="stylesheet" href="css/auth.css">
     <link rel="shortcut icon" href="img/aurumicon.png" type="image/png">
-    <title>Aurum Login</title>
-    <script src="https://jquery.com"></script>
+    <title>Aurum Registration</title>
 </head>
-    <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <a href="index.html" class="navbar-brand text-uppercase">Aurum Records</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto fw-bold">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contacts.html">Contacts</a>
-                </li>
-                <li class="nav-item navbar__login mx-5 my-1 text-uppercase px-2">
-                    <a class="nav-link" href="login.html">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <a href="index.html" class="navbar-brand text-uppercase">Aurum Records</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto fw-bold align-items-lg-center">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contacts.html">Contacts</a>
+            </li>
+            <li class="nav-item">
+                <button
+                        class="theme-toggle"
+                        id="themeToggle"
+                        type="button"
+                        aria-label="Switch color theme"
+                        aria-pressed="false">
+                    <span class="theme-toggle__icon" aria-hidden="true">☀</span>
+                </button>
+            </li>
+            <li class="nav-item navbar__login ms-lg-4 my-1 text-uppercase px-2">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <main class="auth__main">
-        <div class="auth-poster">
-            <img src="img/aurum_poster.jpg" alt="Our label's poster">
-        </div>
-        <div class="auth-form reg">
-            <form class="form reg" novalidate>
-                <div class="form-group reg">
-                    <label for="fullname">Your full name</label>
-                    <input type="text" minlength="1" maxlength="30" class="form-control" id="fullname" placeholder="Innokenty Imgrunt" required>
-                    <div class="invalid-feedback" id="fullname-error"></div>
-                </div>
-                <div class="form-group">
-                    <label for="nickname">Your nickname</label>
-                    <input type="text" minlength="1" maxlength="30" class="form-control" id="nickname" placeholder="supervasya_228" required>
-                    <div class="invalid-feedback" id="nickname-error"></div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="sample@dmitriy.com" required>
-                    <div class="invalid-feedback" id="email-error"></div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" minlength="1" maxlength="20" placeholder="Password" required>
-                    <div class="invalid-feedback" id="password-error"></div>
-                </div>
-                <div class="form-group">
-                    <label for="passwordConfirm">Password</label>
-                    <input type="password" class="form-control" id="passwordConfirm" minlength="1" maxlength="20" placeholder="Confirm password" required>
-                    <div class="invalid-feedback" id="passwordConfirm-error"></div>
-                </div>
-                <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
-                <div class="form-actions">
-                    <button type="submit">Register</button>
-                </div>
-            </form>
-            <div class="auth-redirect">
-                <h3 class="auth-redirect__text">Already have an account? <a class="auth-redirect__link" href="login.html">Log in!</a></h3>
+<main class="auth__main">
+    <div class="auth-poster">
+        <img src="img/aurum_poster.jpg" alt="Our label's poster">
+    </div>
+    <div class="auth-form reg">
+        <h1 class="auth-title">Join the Label</h1>
+        <p class="demo-notice">Demo mode: stored locally in your browser. Please do not use real passwords.</p>
+        <form class="form reg" novalidate>
+            <div class="form-group reg">
+                <label for="fullname">Your full name</label>
+                <input type="text" minlength="1" maxlength="30" class="form-control" id="fullname" placeholder="Innokenty Imgrunt" required>
+                <div class="invalid-feedback" id="fullname-error"></div>
             </div>
+            <div class="form-group">
+                <label for="nickname">Your nickname</label>
+                <input type="text" minlength="1" maxlength="30" class="form-control" id="nickname" placeholder="supervasya_228" required>
+                <div class="invalid-feedback" id="nickname-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="sample@dmitriy.com" required>
+                <div class="invalid-feedback" id="email-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" minlength="8" maxlength="20" placeholder="Password" required>
+                <div class="invalid-feedback" id="password-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="passwordConfirm">Confirm Password</label>
+                <input type="password" class="form-control" id="passwordConfirm" minlength="8" maxlength="20" placeholder="Confirm password" required>
+                <div class="invalid-feedback" id="passwordConfirm-error"></div>
+            </div>
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+            <div class="form-actions">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <div class="auth-redirect">
+            <h2 class="auth-redirect__text">Already have an account? <a class="auth-redirect__link" href="login.html">Log in</a></h2>
         </div>
-    </main>
+    </div>
+</main>
 
-
-    <footer class="footer">
-        <div class="logo">
-            <p>AURUM RECORDS</p>
+<footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__brand">
+            <p class="logo">AURUM RECORDS</p>
+            <p class="footer__tagline">Independent grassroots sound from Qosshy &amp; Astana</p>
         </div>
-        <div class="author">
-            <p>&copy; Dmitriy Rochshupkin, IT-2505</p>
+        <div class="footer__links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contacts.html">Contacts</a>
             <a href="credentials.html">Credentials</a>
         </div>
-        <a class="aitu" href="https://astanait.edu.kz/ru" target="_blank">
-            <img src="img/aitu_logo.png" alt="">
-            <p>AITU</p>
-        </a>
-    </footer>
-    <script src="js/index.js" defer></script>
-    <script src="js/auth.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+        <div class="footer__meta">
+            <p>&copy; 2026 Dmitriy Rochshupkin, IT-2505</p>
+            <a class="aitu" href="https://astanait.edu.kz/ru" target="_blank" rel="noopener noreferrer">
+                <img src="img/aitu_logo.png" alt="Astana IT University logo">
+                <span>AITU</span>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/auth.js"></script>
+</body>
 </html>
