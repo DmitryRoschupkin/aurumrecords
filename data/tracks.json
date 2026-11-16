@@ -5,15 +5,17 @@
     "artistId": 1,
     "releaseDate": "2025-04-25",
     "cover": "img/covers/mothe_christo.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1809990713
   },
   {
     "id": 2,
-    "title": "Sold Out",
+    "title": "DreamKeeperc",
     "artistId": 1,
-    "releaseDate": "2023-11-03",
-    "cover": "img/covers/colombo.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "releaseDate": "2021-11-26",
+    "cover": "img/covers/dreamkeeperc.jpg",
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1595625748
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "artistId": 3,
     "releaseDate": "2018-10-01",
     "cover": "img/covers/beregi_sebja.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1564988746
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "artistId": 3,
     "releaseDate": "2017-12-17",
     "cover": "img/covers/fifth_day.png",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1564989470
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "artistId": 4,
     "releaseDate": "2018-06-29",
     "cover": "img/covers/gold.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1813376997
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "artistId": 4,
     "releaseDate": "2020-12-25",
     "cover": "img/covers/ne_stanet_hitom.png",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1664573538
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "artistId": 7,
     "releaseDate": "2004-03-22",
     "cover": "img/covers/vesna.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1834367582
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "artistId": 7,
     "releaseDate": "2000-11-23",
     "cover": "img/covers/plavniki.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1834640093
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "artistId": 5,
     "releaseDate": "2026-02-27",
     "cover": "img/covers/v_tvoih_snakh.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1878084028
   },
   {
     "id": 10,
@@ -77,7 +86,8 @@
     "artistId": 5,
     "releaseDate": "2026-02-27",
     "cover": "img/covers/v_tvoih_snakh.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1878084022
   },
   {
     "id": 11,
@@ -85,7 +95,8 @@
     "artistId": 2,
     "releaseDate": "2017-03-31",
     "cover": "img/covers/lpvl.png",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1216632567
   },
   {
     "id": 12,
@@ -93,7 +104,8 @@
     "artistId": 2,
     "releaseDate": "2025-11-28",
     "cover": "img/covers/partizan.png",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1856227149
   },
   {
     "id": 13,
@@ -101,7 +113,8 @@
     "artistId": 6,
     "releaseDate": "2019-03-08",
     "cover": "img/covers/dof.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1455090800
   },
   {
     "id": 14,
@@ -109,7 +122,8 @@
     "artistId": 6,
     "releaseDate": "2018-01-18",
     "cover": "img/covers/kosmos.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1336442607
   },
   {
     "id": 15,
@@ -117,7 +131,8 @@
     "artistId": 8,
     "releaseDate": "2026-02-13",
     "cover": "img/covers/onda.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1876290898
   },
   {
     "id": 16,
@@ -125,7 +140,8 @@
     "artistId": 8,
     "releaseDate": "2026-02-13",
     "cover": "img/covers/onda.jpg",
-    "coverAlt": "Cover artwork for Verified track title"
+    "coverAlt": "Cover artwork for Verified track title",
+    "itunesTrackId": 1876290905
   },
   {
     "id": 17,

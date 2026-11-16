@@ -74,7 +74,7 @@ body {
 }
 
 [data-theme="light"] .main-header::after {
-    opacity: 0.2;
+    display: none;
 }
 
 .layers {
@@ -425,10 +425,27 @@ body {
 }
 
 .logo {
-    color: var(--gold-bright);
+    color: #ffefcc;
     font-size: 1.15rem;
     letter-spacing: 3px;
     margin-bottom: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.logo:hover {
+    color: #ffefcc;
+    text-shadow: 0 0 12px rgba(255, 239, 204, 0.75), 0 0 24px rgba(212, 175, 112, 0.5);
+}
+
+[data-theme="light"] .logo {
+    color: var(--gold-bright);
+}
+
+[data-theme="light"] .logo:hover {
+    color: var(--gold-accent);
+    text-shadow: 0 0 12px rgba(140, 102, 35, 0.45);
 }
 
 .footer__tagline {
