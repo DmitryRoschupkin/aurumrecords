@@ -3,23 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
           crossorigin="anonymous">
-
     <link rel="stylesheet" href="css/index_tmp.css">
     <link rel="shortcut icon" href="img/aurumicon.png" type="image/png">
-
     <title>Contacts | Aurum Records</title>
 </head>
-
 <body>
 
 <nav class="navbar navbar-expand-lg fixed-top">
     <a href="index.html" class="navbar-brand text-uppercase">Aurum Records</a>
-
     <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -28,21 +23,17 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto fw-bold">
+        <ul class="navbar-nav ms-auto fw-bold align-items-lg-center">
             <li class="nav-item">
                 <a class="nav-link" href="index.html">Home</a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>
             </li>
-
             <li class="nav-item active">
                 <a class="nav-link" href="contacts.html" aria-current="page">Contacts</a>
             </li>
-
             <li class="nav-item">
                 <button
                         class="nav-link favorites-trigger"
@@ -50,13 +41,21 @@
                         data-bs-toggle="modal"
                         data-bs-target="#favoritesModal"
                         aria-label="Open liked tracks">
-
                     <span aria-hidden="true">♥</span>
                     <span id="favoritesCount">0</span>
                 </button>
             </li>
-
-            <li class="nav-item navbar__login mx-5 my-1 text-uppercase px-2">
+            <li class="nav-item">
+                <button
+                        class="theme-toggle"
+                        id="themeToggle"
+                        type="button"
+                        aria-label="Switch color theme"
+                        aria-pressed="false">
+                    <span class="theme-toggle__icon" aria-hidden="true">☀</span>
+                </button>
+            </li>
+            <li class="nav-item navbar__login ms-lg-4 my-1 text-uppercase px-2">
                 <a class="nav-link" href="login.html">Login</a>
             </li>
         </ul>
@@ -76,16 +75,13 @@
 
         <div class="contacts-page__menu">
             <h2 class="contacts-page__menu-title">First things first: what are you looking for?</h2>
-
             <ul class="contacts-page__menu-list">
                 <li class="contacts-page__menu-list-item">
                     <a href="#postSong">Release music on digital platforms</a>
                 </li>
-
                 <li class="contacts-page__menu-list-item">
                     <a href="#registration">Become part of our label</a>
                 </li>
-
                 <li class="contacts-page__menu-list-item">
                     <a href="index.html">Take me back home</a>
                 </li>
@@ -96,26 +92,20 @@
     <section class="distribution" id="postSong">
         <div class="distro-container">
             <h2 class="distro-title">Drop Your Track!</h2>
-
             <p class="distro-subtitle">
                 Fill in the release details to submit your music for digital distribution.
             </p>
 
             <form class="distro-form" id="distroForm" novalidate>
                 <div class="distro-grid">
-
                     <div class="form-group">
                         <label for="artistName">Artist Name / Alias *</label>
-                        <input type="text" id="artistName"
-                               placeholder="e.g. dmitry_rspkn" required>
+                        <input type="text" id="artistName" placeholder="e.g. dmitry_rspkn" required>
                     </div>
-
                     <div class="form-group">
                         <label for="trackTitle">Track / Album Title *</label>
-                        <input type="text" id="trackTitle"
-                               placeholder="Your release title" required>
+                        <input type="text" id="trackTitle" placeholder="Your release title" required>
                     </div>
-
                     <div class="form-group">
                         <label for="genreSelect">Genre *</label>
                         <select id="genreSelect" required>
@@ -127,7 +117,6 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="tariffSelect">Distribution Package *</label>
                         <select id="tariffSelect" required>
@@ -136,30 +125,22 @@
                             <option value="full">Full Label Deal (from 35,000 ₸)</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="releaseDate">Preferred Release Date *</label>
                         <input type="date" id="releaseDate" required>
                     </div>
-
                     <div class="form-group">
                         <label for="audioLink">Audio Link (WAV / Drive) *</label>
-                        <input type="url" id="audioLink"
-                               placeholder="https://drive.google.com/..." required>
+                        <input type="url" id="audioLink" placeholder="https://drive.google.com/..." required>
                     </div>
-
                     <div class="form-group full-width">
-                        <label for="coverFile">Upload Cover Artwork (3000 × 3000 px, JPG/PNG)</label>
-                        <input type="file" id="coverFile"
-                               accept="image/png, image/jpeg">
+                        <label for="coverFile">Upload Cover Artwork (3000 &times; 3000 px, JPG/PNG)</label>
+                        <input type="file" id="coverFile" accept="image/png, image/jpeg">
                     </div>
-
                     <div class="form-group full-width">
                         <label for="comments">Additional Comments / Pitching Notes</label>
-                        <textarea id="comments" rows="4"
-                                  placeholder="Social media links, release details, and other notes..."></textarea>
+                        <textarea id="comments" rows="4" placeholder="Social media links, release details, and other notes..."></textarea>
                     </div>
-
                     <div class="form-group full-width checkbox-group">
                         <input type="checkbox" id="termsCheck" required>
                         <label for="termsCheck">
@@ -167,11 +148,9 @@
                             to the submitted material.
                         </label>
                     </div>
-
                     <div class="form-actions">
                         <button type="submit" class="submit-btn">Submit Release</button>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -180,7 +159,6 @@
     <section class="join-section" id="registration">
         <div class="join-container">
             <h2 class="join-title">Become a Label Artist</h2>
-
             <p class="join-subtitle">
                 Leave your contact details and portfolio. Our team will review your
                 music and get back to you.
@@ -188,33 +166,22 @@
 
             <form class="join-form" id="joinForm" novalidate>
                 <div class="join-grid">
-
                     <div class="form-group">
                         <label for="artistAlias">Artist Name / Alias *</label>
-                        <input type="text" id="artistAlias"
-                               placeholder="e.g. dmitry_rspkn" required>
+                        <input type="text" id="artistAlias" placeholder="e.g. dmitry_rspkn" required>
                     </div>
-
                     <div class="form-group">
                         <label for="contactInfo">Contact Details (Telegram / Phone / Email) *</label>
-                        <input type="text" id="contactInfo"
-                               placeholder="@username or +7 707 ... or email@example.com"
-                               required>
+                        <input type="text" id="contactInfo" placeholder="@username or +7 707 ... or email@example.com" required>
                     </div>
-
                     <div class="form-group full-width">
                         <label for="portfolioLink">Portfolio Link (YouTube / SoundCloud / VK / Drive) *</label>
-                        <input type="url" id="portfolioLink"
-                               placeholder="https://soundcloud.com/your_name" required>
+                        <input type="url" id="portfolioLink" placeholder="https://soundcloud.com/your_name" required>
                     </div>
-
                     <div class="form-group full-width">
                         <label for="artistBio">Your Musical Background *</label>
-                        <textarea id="artistBio" rows="4"
-                                  placeholder="Tell us about your style, music production experience, performances, and creative goals..."
-                                  required></textarea>
+                        <textarea id="artistBio" rows="4" placeholder="Tell us about your style, music production experience, performances, and creative goals..." required></textarea>
                     </div>
-
                     <div class="form-group full-width checkbox-group">
                         <input type="checkbox" id="joinConsent" required>
                         <label for="joinConsent">
@@ -222,9 +189,7 @@
                             the label team to review my submitted music.
                         </label>
                     </div>
-
                 </div>
-
                 <div class="form-actions">
                     <button type="submit" class="submit-btn">Submit Application</button>
                 </div>
@@ -234,65 +199,45 @@
 </main>
 
 <footer class="footer">
-    <div class="logo">
-        <p>AURUM RECORDS</p>
+    <div class="footer__inner">
+        <div class="footer__brand">
+            <p class="logo">AURUM RECORDS</p>
+            <p class="footer__tagline">Independent grassroots sound from Qosshy &amp; Astana</p>
+        </div>
+        <div class="footer__links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contacts.html">Contacts</a>
+            <a href="credentials.html">Credentials</a>
+        </div>
+        <div class="footer__meta">
+            <p>&copy; 2026 Dmitriy Rochshupkin, IT-2505</p>
+            <a class="aitu" href="https://astanait.edu.kz/ru" target="_blank" rel="noopener noreferrer">
+                <img src="img/aitu_logo.png" alt="Astana IT University logo">
+                <span>AITU</span>
+            </a>
+        </div>
     </div>
-
-    <div class="author">
-        <p>&copy; Dmitriy Rochshupkin, IT-2505</p>
-        <a href="credentials.html">Credentials</a>
-    </div>
-
-    <a class="aitu" href="https://astanait.edu.kz/ru" target="_blank" rel="noopener noreferrer">
-        <img src="img/aitu_logo.png" alt="Astana IT University logo">
-        <p>AITU</p>
-    </a>
 </footer>
 
-<div
-        class="modal fade"
-        id="favoritesModal"
-        tabindex="-1"
-        aria-labelledby="favoritesModalTitle"
-        aria-hidden="true">
-
+<div class="modal fade" id="favoritesModal" tabindex="-1" aria-labelledby="favoritesModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-
         <div class="modal-content favorites-modal-content">
-
             <div class="modal-header">
-                <h2 class="modal-title" id="favoritesModalTitle">
-                    Your Liked Tracks
-                </h2>
-
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close">
-                </button>
+                <h2 class="modal-title" id="favoritesModalTitle">Your Liked Tracks</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
-
-                <div id="favoritesList" class="favorites-list">
-                </div>
-
+                <p class="favorites-summary" id="favoritesSummary"></p>
+                <div id="favoritesList" class="favorites-list"></div>
             </div>
-
-            <div class="modal-footer">
-                <button
-                        type="button"
-                        class="btn favorites-close-btn"
-                        data-bs-dismiss="modal">
-                    Close
-                </button>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn favorites-clear-btn" id="clearFavoritesBtn">Clear all</button>
+                <button type="button" class="btn favorites-close-btn" data-bs-dismiss="modal">Close</button>
             </div>
-
         </div>
     </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

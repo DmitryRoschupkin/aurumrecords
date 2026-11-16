@@ -7,6 +7,11 @@ let tracks = [];
 let studios = [];
 let faqItems = [];
 
+let activeAudio = null;
+let activePreviewBtn = null;
+const previewCache = new Map();
+let lastSelectedArtistId = null;
+
 document.addEventListener("DOMContentLoaded", initAboutPage);
 
 async function initAboutPage() {
@@ -30,20 +35,18 @@ async function initAboutPage() {
 
         setupTrackControls();
         setupArtistTrackNavigation();
-        setupFavorites();
+        setupAudioPreviews();
     } catch (error) {
         console.error("Could not load About page data:", error);
-        showPageError("Some page content could not be loaded. Please check the JSON paths and run the site through a local server.");
+        showPageError("Some page content could not be loaded. Please run the site through a local server.");
     }
 }
 
 async function fetchJson(filename) {
     const response = await fetch(DATA_PATH + filename);
-
     if (!response.ok) {
         throw new Error(`Failed to load ${filename}: HTTP ${response.status}`);
     }
-
     return response.json();
 }
 
@@ -75,6 +78,8 @@ function renderArtists(items) {
 
     items.forEach((artist, index) => {
         const card = createElement("article", "artist-card");
+        card.id = `artist-card-${artist.id}`;
+
         const image = createElement("img", "artist-card__image");
         image.src = artist.image;
         image.alt = artist.alt || `${artist.name} artist portrait`;
@@ -95,7 +100,7 @@ function renderArtists(items) {
         grid.append(card);
 
         if (window.jQuery) {
-            window.jQuery(card).hide().delay(index * 70).fadeIn(280);
+            window.jQuery(card).stop(true, true).hide().delay(index * 60).fadeIn(260);
         }
     });
 }
@@ -104,8 +109,10 @@ function renderTracks(items) {
     const grid = document.querySelector("#tracksGrid");
     const status = document.querySelector("#tracksStatus");
     const count = document.querySelector("#tracksCount");
+    const backBtn = document.querySelector("#backToArtistBtn");
     if (!grid) return;
 
+    stopCurrentPreview();
     grid.replaceChildren();
 
     if (count) {
@@ -113,40 +120,50 @@ function renderTracks(items) {
     }
 
     if (items.length === 0) {
-        if (status) status.textContent = tracks.length === 0
-            ? "Track information will appear here once the release catalogue is added."
-            : "Nothing found. Try another search or sorting option.";
+        if (status) {
+            status.textContent = tracks.length === 0
+                ? "Track information will appear here once the release catalogue is added."
+                : "Nothing found. Try another search or sorting option.";
+        }
+        if (backBtn) backBtn.hidden = true;
         return;
     }
 
     if (status) status.textContent = "";
+    if (backBtn) backBtn.hidden = true;
 
     items.forEach(track => {
         const artist = artists.find(item => item.id === track.artistId);
+        const artistLabel = artist ? artist.name : "Unknown artist";
+
         const card = createElement("article", "track-card");
         card.dataset.artistId = String(track.artistId);
 
+        const coverWrap = createElement("div", "track-card__cover-wrap");
         const image = createElement("img", "track-card__cover");
         image.src = track.cover;
         image.alt = track.coverAlt || `${track.title} cover`;
         image.loading = "lazy";
+        coverWrap.append(image);
 
         const content = createElement("div", "track-card__content");
         const title = createElement("h3", "track-card__title", track.title);
-        const artistName = createElement("p", "track-card__artist", artist ? artist.name : "Unknown artist");
+        const artistName = createElement("p", "track-card__artist", artistLabel);
         const date = createElement("time", "track-card__date", formatDate(track.releaseDate));
         date.dateTime = track.releaseDate;
-        const likeButton = createElement(
-            "button",
-            "track-card__like",
-            isTrackLiked(track.id) ? "♥" : "♡"
-        );
 
-        likeButton.type = "button";
-        likeButton.dataset.likeTrackId = String(track.id);
+        const actions = createElement("div", "track-card__actions");
+
+        const previewBtn = createElement("button", "track-card__preview", "▶ 30s Preview");
+        previewBtn.type = "button";
+        previewBtn.dataset.previewTrack = track.title;
+        previewBtn.dataset.previewArtist = artistLabel;
+        previewBtn.setAttribute("aria-label", `Play 30 second preview of ${track.title} by ${artistLabel}`);
 
         const liked = isTrackLiked(track.id);
-
+        const likeButton = createElement("button", "track-card__like", liked ? "♥" : "♡");
+        likeButton.type = "button";
+        likeButton.dataset.likeTrackId = String(track.id);
         likeButton.classList.toggle("is-liked", liked);
         likeButton.setAttribute("aria-pressed", String(liked));
         likeButton.setAttribute(
@@ -154,9 +171,95 @@ function renderTracks(items) {
             `${liked ? "Remove" : "Add"} ${track.title} ${liked ? "from" : "to"} favorites`
         );
 
-        content.append(title, artistName, date, likeButton);
-        card.append(image, content);
+        actions.append(previewBtn, likeButton);
+        content.append(title, artistName, date, actions);
+        card.append(coverWrap, content);
         grid.append(card);
+    });
+}
+
+function stopCurrentPreview() {
+    if (activeAudio) {
+        activeAudio.pause();
+        activeAudio.currentTime = 0;
+        activeAudio = null;
+    }
+    if (activePreviewBtn) {
+        activePreviewBtn.classList.remove("is-playing");
+        activePreviewBtn.textContent = "▶ 30s Preview";
+        activePreviewBtn = null;
+    }
+}
+
+async function fetchItunesPreview(artist, title) {
+    const cacheKey = `${artist}::${title}`.toLowerCase();
+    if (previewCache.has(cacheKey)) {
+        return previewCache.get(cacheKey);
+    }
+
+    const query = encodeURIComponent(`${artist} ${title}`);
+    const url = `https://itunes.apple.com/search?term=${query}&entity=song&limit=1`;
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error("iTunes API error");
+    }
+
+    const data = await response.json();
+    const previewUrl = data.results && data.results[0] ? data.results[0].previewUrl : null;
+    previewCache.set(cacheKey, previewUrl);
+    return previewUrl;
+}
+
+function setupAudioPreviews() {
+    const grid = document.querySelector("#tracksGrid");
+    if (!grid) return;
+
+    grid.addEventListener("click", async event => {
+        const btn = event.target.closest(".track-card__preview");
+        if (!btn) return;
+
+        if (activePreviewBtn === btn) {
+            stopCurrentPreview();
+            return;
+        }
+
+        stopCurrentPreview();
+
+        const artist = btn.dataset.previewArtist;
+        const title = btn.dataset.previewTrack;
+
+        btn.disabled = true;
+        btn.textContent = "Loading...";
+
+        try {
+            const previewUrl = await fetchItunesPreview(artist, title);
+            btn.disabled = false;
+
+            if (!previewUrl) {
+                btn.textContent = "No preview";
+                setTimeout(() => {
+                    btn.textContent = "▶ 30s Preview";
+                }, 2000);
+                return;
+            }
+
+            const audio = new Audio(previewUrl);
+            activeAudio = audio;
+            activePreviewBtn = btn;
+
+            btn.classList.add("is-playing");
+            btn.textContent = "❚❚ Pause";
+
+            audio.addEventListener("ended", stopCurrentPreview);
+            await audio.play();
+        } catch {
+            btn.disabled = false;
+            btn.textContent = "Unavailable";
+            setTimeout(() => {
+                btn.textContent = "▶ 30s Preview";
+            }, 2000);
+        }
     });
 }
 
@@ -179,7 +282,7 @@ function setupTrackControls() {
         const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
         const sortOrder = sortSelect ? sortSelect.value : "newest";
 
-        let filtered = tracks.filter(track => {
+        const filtered = tracks.filter(track => {
             const artist = artists.find(item => item.id === track.artistId);
             const searchableText = `${track.title} ${artist ? artist.name : ""}`.toLowerCase();
             return searchableText.includes(query);
@@ -200,19 +303,41 @@ function setupTrackControls() {
 
 function setupArtistTrackNavigation() {
     $("#artistsGrid").on("click", ".artist-card__button", function () {
-
-        const artistId = Number($(this).data("artist-id"));
-        const $releases = $("#releases");
-
-        $("html, body").stop(true).animate({
-            scrollTop: $releases.offset().top - 90
-        }, 650);
+        const artistId = Number($(this).attr("data-artist-id"));
+        lastSelectedArtistId = artistId;
 
         highlightArtistTracks(artistId);
+
+        const firstTrackCard = document.querySelector(`.track-card[data-artist-id="${artistId}"]`);
+        const targetEl = firstTrackCard || document.getElementById("tracksStatusBar") || document.getElementById("releases");
+
+        if (targetEl) {
+            const targetTop = targetEl.getBoundingClientRect().top + window.scrollY - 120;
+            $("html, body").stop(true).animate({ scrollTop: targetTop }, 600);
+        }
+    });
+
+    $("#backToArtistBtn").on("click", function () {
+        if (!lastSelectedArtistId) return;
+        const artistCard = document.getElementById(`artist-card-${lastSelectedArtistId}`);
+        if (!artistCard) return;
+
+        $(".artist-card").removeClass("artist-highlighted");
+        $(artistCard).addClass("artist-highlighted");
+
+        const targetTop = artistCard.getBoundingClientRect().top + window.scrollY - 115;
+        $("html, body").stop(true).animate({ scrollTop: targetTop }, 600);
+
+        setTimeout(() => {
+            $(artistCard).removeClass("artist-highlighted");
+        }, 2500);
     });
 }
 
 function highlightArtistTracks(artistId) {
+    const artist = artists.find(item => item.id === artistId);
+    const $backBtn = $("#backToArtistBtn");
+
     $(".track-card")
         .stop(true, true)
         .removeClass("highlighted")
@@ -222,19 +347,22 @@ function highlightArtistTracks(artistId) {
         return Number($(this).data("artist-id")) === artistId;
     });
 
+    if (artist) {
+        $backBtn.text(`← Back to ${artist.name}`).prop("hidden", false);
+    }
+
     if ($artistTracks.length === 0) {
-        $("#tracksStatus").text(
-            "No tracks from this artist have been added yet."
-        );
+        $("#tracksStatus").text("No tracks from this artist have been added yet.");
         return;
     }
 
     $("#tracksStatus").text(
-        `Found ${$artistTracks.length} tracks by this artist.`
+        `Highlighted ${$artistTracks.length} ${$artistTracks.length === 1 ? "track" : "tracks"} by ${artist ? artist.name : "this artist"}.`
     );
 
     $artistTracks
         .addClass("highlighted")
+        .stop(true, true)
         .hide()
         .fadeIn(350);
 }
@@ -264,7 +392,7 @@ function renderStudios(items) {
         }
         indicators.append(indicator);
 
-        const slide = createElement("div", `carousel-item${index === 0 ? " active" : ""}`);
+        const slide = createElement("div", `carousel-item studio-slide${index === 0 ? " active" : ""}`);
         const image = createElement("img", "d-block w-100 studio-slide__image");
         image.src = studio.image;
         image.alt = studio.alt || studio.name;

@@ -8,50 +8,39 @@ function getCurrentUser() {
     }
 }
 
-function isTrackLiked(trackId) {
+function getLikedIds() {
     const user = getCurrentUser();
-
     if (!user || !Array.isArray(user.likedTracks)) {
-        return false;
+        return [];
     }
-
-    return user.likedTracks.includes(Number(trackId));
+    return user.likedTracks.map(Number);
 }
 
 function saveLikedTracks(email, likedTracks) {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const userIndex = users.findIndex(
-        user => user.email === email
-    );
-
+    const userIndex = users.findIndex(user => user.email === email);
     if (userIndex === -1) return false;
 
-    users[userIndex].likedTracks = likedTracks;
+    const uniqueIds = [...new Set(likedTracks.map(Number))];
+    users[userIndex].likedTracks = uniqueIds;
 
     localStorage.setItem("users", JSON.stringify(users));
-
-    localStorage.setItem(
-        "current_user",
-        JSON.stringify(users[userIndex])
-    );
-
+    localStorage.setItem("current_user", JSON.stringify(users[userIndex]));
     return true;
+}
+
+function isTrackLiked(trackId) {
+    return getLikedIds().includes(Number(trackId));
 }
 
 function toggleTrackLike(trackId) {
     const currentUser = getCurrentUser();
-
     if (!currentUser) {
         return null;
     }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const user = users.find(
-        item => item.email === currentUser.email
-    );
-
+    const user = users.find(item => item.email === currentUser.email);
     if (!user) return null;
 
     if (!Array.isArray(user.likedTracks)) {
@@ -59,56 +48,81 @@ function toggleTrackLike(trackId) {
     }
 
     const id = Number(trackId);
-
     if (user.likedTracks.includes(id)) {
-        user.likedTracks = user.likedTracks.filter(
-            track => track !== id
-        );
+        user.likedTracks = user.likedTracks.filter(track => track !== id);
     } else {
         user.likedTracks.push(id);
     }
 
-    return saveLikedTracks(user.email, user.likedTracks);
+    saveLikedTracks(user.email, user.likedTracks);
+    return user.likedTracks.includes(id);
 }
 
 function updateFavoritesCount() {
     const counter = document.querySelector("#favoritesCount");
     if (!counter) return;
-
-    const user = getCurrentUser();
-    const count = user?.likedTracks?.length || 0;
-
-    counter.textContent = count;
+    counter.textContent = getLikedIds().length;
 }
 
-function renderLikedTracks() {
+async function ensureCatalogLoaded() {
+    if (typeof tracks !== "undefined" && Array.isArray(tracks) && tracks.length > 0) {
+        return { tracksList: tracks, artistsList: typeof artists !== "undefined" ? artists : [] };
+    }
+    try {
+        const [tracksRes, artistsRes] = await Promise.all([
+            fetch("data/tracks.json"),
+            fetch("data/artists.json")
+        ]);
+        const tracksList = tracksRes.ok ? await tracksRes.json() : [];
+        const artistsList = artistsRes.ok ? await artistsRes.json() : [];
+        return { tracksList, artistsList };
+    } catch {
+        return { tracksList: [], artistsList: [] };
+    }
+}
+
+async function renderLikedTracks() {
     const container = document.querySelector("#favoritesList");
+    const summary = document.querySelector("#favoritesSummary");
     if (!container) return;
 
     container.replaceChildren();
 
     const user = getCurrentUser();
-
     if (!user) {
-        container.textContent = "Please log in to see your liked tracks.";
+        if (summary) summary.textContent = "";
+        const msg = document.createElement("p");
+        msg.className = "empty-state";
+        msg.textContent = "Please log in to see your liked tracks.";
+        container.append(msg);
         updateFavoritesCount();
         return;
     }
 
-    const likedTracks = (user.likedTracks || [])
-        .map(id => tracks.find(track => track.id === id))
+    const likedIds = getLikedIds();
+    const { tracksList, artistsList } = await ensureCatalogLoaded();
+
+    const likedTracks = likedIds
+        .map(id => tracksList.find(track => track.id === id))
         .filter(Boolean);
 
+    if (summary) {
+        summary.textContent = likedTracks.length > 0
+            ? `Saved tracks: ${likedTracks.length}`
+            : "";
+    }
+
     if (likedTracks.length === 0) {
-        container.textContent = "You haven't liked any tracks yet.";
+        const empty = document.createElement("p");
+        empty.className = "empty-state";
+        empty.textContent = "You haven't liked any tracks yet.";
+        container.append(empty);
         updateFavoritesCount();
         return;
     }
 
     likedTracks.forEach(track => {
-        const artist = artists.find(
-            item => item.id === track.artistId
-        );
+        const artist = artistsList.find(item => item.id === track.artistId);
 
         const item = document.createElement("article");
         item.className = "favorite-track";
@@ -129,12 +143,9 @@ function renderLikedTracks() {
         const removeButton = document.createElement("button");
         removeButton.type = "button";
         removeButton.className = "favorite-track__remove";
-        removeButton.dataset.removeTrackId = track.id;
-        removeButton.textContent = "♥";
-        removeButton.setAttribute(
-            "aria-label",
-            `Remove ${track.title} from favorites`
-        );
+        removeButton.dataset.removeTrackId = String(track.id);
+        removeButton.textContent = "✕";
+        removeButton.setAttribute("aria-label", `Remove ${track.title} from favorites`);
 
         info.append(title, artistName);
         item.append(image, info, removeButton);
@@ -144,46 +155,38 @@ function renderLikedTracks() {
     updateFavoritesCount();
 }
 
+function syncCardLikeButtons() {
+    document.querySelectorAll("[data-like-track-id]").forEach(btn => {
+        const id = Number(btn.dataset.likeTrackId);
+        const liked = isTrackLiked(id);
+        btn.textContent = liked ? "♥" : "♡";
+        btn.classList.toggle("is-liked", liked);
+        btn.setAttribute("aria-pressed", String(liked));
+    });
+}
+
 function setupFavorites() {
     const tracksGrid = document.querySelector("#tracksGrid");
     const favoritesList = document.querySelector("#favoritesList");
     const favoritesModal = document.querySelector("#favoritesModal");
+    const clearBtn = document.querySelector("#clearFavoritesBtn");
 
     if (tracksGrid) {
         tracksGrid.addEventListener("click", event => {
             const button = event.target.closest("[data-like-track-id]");
-
             if (!button) return;
 
             const trackId = Number(button.dataset.likeTrackId);
             const result = toggleTrackLike(trackId);
 
             if (result === null) {
-                const status = document.querySelector("#tracksStatus");
-
-                if (status) {
-                    status.textContent =
-                        "Please log in to add tracks to your favorites.";
-                }
-
+                alert("Please log in to add tracks to your favorites!");
                 return;
             }
 
-            const liked = isTrackLiked(trackId);
-
-            button.textContent = liked ? "♥" : "♡";
-            button.classList.toggle("is-liked", liked);
-            button.setAttribute("aria-pressed", String(liked));
-
-            const track = tracks.find(item => item.id === trackId);
-
-            if (track) {
-                button.setAttribute(
-                    "aria-label",
-                    `${liked ? "Remove" : "Add"} ${track.title} ${liked ? "from" : "to"} favorites`
-                );
-            }
-
+            button.textContent = result ? "♥" : "♡";
+            button.classList.toggle("is-liked", result);
+            button.setAttribute("aria-pressed", String(result));
             updateFavoritesCount();
         });
     }
@@ -191,23 +194,25 @@ function setupFavorites() {
     if (favoritesList) {
         favoritesList.addEventListener("click", event => {
             const button = event.target.closest("[data-remove-track-id]");
-
             if (!button) return;
 
             const trackId = Number(button.dataset.removeTrackId);
-
             toggleTrackLike(trackId);
             renderLikedTracks();
+            syncCardLikeButtons();
+        });
+    }
 
-            const trackButton = document.querySelector(
-                `[data-like-track-id="${trackId}"]`
-            );
-
-            if (trackButton) {
-                trackButton.textContent = "♡";
-                trackButton.classList.remove("is-liked");
-                trackButton.setAttribute("aria-pressed", "false");
+    if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+            const user = getCurrentUser();
+            if (!user) {
+                alert("Please log in first!");
+                return;
             }
+            saveLikedTracks(user.email, []);
+            renderLikedTracks();
+            syncCardLikeButtons();
         });
     }
 
@@ -217,3 +222,5 @@ function setupFavorites() {
 
     updateFavoritesCount();
 }
+
+document.addEventListener("DOMContentLoaded", setupFavorites);
