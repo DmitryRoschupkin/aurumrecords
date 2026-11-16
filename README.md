@@ -11,10 +11,10 @@ ___
 
 Record and release your tracks!
 
-![Screenshot of home page](./img/Screenshot 2026-11-16 at 19-43-25 Aurum Records.png)
+![Screenshot of home page](img/home_page_screenshot.png)
 
-![Screenshot of tracks section](./img/Screenshot 2026-11-16 at 19-44-03 About Aurum Records.png)
+![Screenshot of tracks section](img/about_page_screenshot.png)
 
-![Screenshot of contacts](./img/Screenshot 2026-11-16 at 19-44-24 Contacts Aurum Records.png)
+![Screenshot of contacts](img/contacts_page_screenshot.png)
 
-![Screenshot of login page](./img/Screenshot 2026-11-16 at 19-44-52 Aurum Login.png)
+![Screenshot of login page](img/login_page_screenshot.png)
