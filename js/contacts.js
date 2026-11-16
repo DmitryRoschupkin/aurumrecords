@@ -128,7 +128,7 @@ $(document).ready(function () {
         }
 
         const allowedTypes = ["image/jpeg", "image/png"];
-        const maxSize = 10 * 1024 * 1024; // 10 MB
+        const maxSize = 10 * 1024 * 1024;
 
         if (!allowedTypes.includes(file.type)) {
             showError($field, "Only JPG and PNG files are allowed.");
