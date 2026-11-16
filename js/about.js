@@ -158,6 +158,9 @@ function renderTracks(items) {
         previewBtn.type = "button";
         previewBtn.dataset.previewTrack = track.title;
         previewBtn.dataset.previewArtist = artistLabel;
+        if (track.itunesTrackId) {
+            previewBtn.dataset.previewTrackId = String(track.itunesTrackId);
+        }
         previewBtn.setAttribute("aria-label", `Play 30 second preview of ${track.title} by ${artistLabel}`);
 
         const liked = isTrackLiked(track.id);
@@ -191,22 +194,36 @@ function stopCurrentPreview() {
     }
 }
 
-async function fetchItunesPreview(artist, title) {
-    const cacheKey = `${artist}::${title}`.toLowerCase();
+async function fetchItunesPreview(artist, title, trackId) {
+    const cacheKey = trackId ? `id::${trackId}` : `${artist}::${title}`.toLowerCase();
     if (previewCache.has(cacheKey)) {
         return previewCache.get(cacheKey);
     }
 
-    const query = encodeURIComponent(`${artist} ${title}`);
-    const url = `https://itunes.apple.com/search?term=${query}&entity=song&limit=1`;
+    let previewUrl = null;
 
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error("iTunes API error");
+    if (trackId) {
+        try {
+            const lookupUrl = `https://itunes.apple.com/lookup?id=${encodeURIComponent(trackId)}`;
+            const response = await fetch(lookupUrl);
+            if (response.ok) {
+                const data = await response.json();
+                previewUrl = data.results && data.results[0] ? data.results[0].previewUrl : null;
+            }
+        } catch {}
     }
 
-    const data = await response.json();
-    const previewUrl = data.results && data.results[0] ? data.results[0].previewUrl : null;
+    if (!previewUrl) {
+        const query = encodeURIComponent(`${artist} ${title}`);
+        const searchUrl = `https://itunes.apple.com/search?term=${query}&entity=song&limit=1`;
+        const response = await fetch(searchUrl);
+        if (!response.ok) {
+            throw new Error("iTunes API error");
+        }
+        const data = await response.json();
+        previewUrl = data.results && data.results[0] ? data.results[0].previewUrl : null;
+    }
+
     previewCache.set(cacheKey, previewUrl);
     return previewUrl;
 }
@@ -228,12 +245,13 @@ function setupAudioPreviews() {
 
         const artist = btn.dataset.previewArtist;
         const title = btn.dataset.previewTrack;
+        const trackId = btn.dataset.previewTrackId || null;
 
         btn.disabled = true;
         btn.textContent = "Loading...";
 
         try {
-            const previewUrl = await fetchItunesPreview(artist, title);
+            const previewUrl = await fetchItunesPreview(artist, title, trackId);
             btn.disabled = false;
 
             if (!previewUrl) {
