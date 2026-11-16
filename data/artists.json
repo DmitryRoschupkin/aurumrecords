@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Friendly Thug 52",
+    "name": "FRIENDLY THUG 52 NGG",
     "genre": "Hip-Hop",
     "description": "True OG from Saint-Petersburg. 52!",
     "image": "img/artists/thug.jpg",
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "name": "Husky",
+    "name": "Хаски",
     "genre": "Hip-Hop / Experimental",
     "description": "Poet of modern rap. Distinctive and provocative!",
     "image": "img/artists/husky.jpeg",
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "name": "Avtosport",
+    "name": "Автоспорт",
     "genre": "Indie Rock",
     "description": "AIndie-Shoegaze band from Moscow.",
     "image": "img/artists/avtosport.jpeg",
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "name": "Buerak",
+    "name": "Буерак",
     "genre": "Post-Punk",
     "description": "A post-punk sound.",
     "image": "img/artists/buerak.jpg",
