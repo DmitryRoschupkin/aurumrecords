@@ -1061,6 +1061,68 @@ body {
     color: var(--btn-hover-text);
 }
 
+.user-profile-modal .modal-content {
+    background: #10100f;
+    color: #ffefcc;
+    border: 1px solid #b08d4f;
+    border-radius: 14px;
+}
+
+.user-profile-modal .modal-header,
+.user-profile-modal .modal-footer {
+    border-color: rgba(212, 175, 112, 0.25);
+}
+
+.user-profile-modal .modal-title {
+    color: #d4af70;
+}
+
+.user-profile-modal .btn-close {
+    filter: invert(1);
+}
+
+.profile-detail {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(212, 175, 112, 0.18);
+}
+
+.profile-detail:last-child {
+    border-bottom: none;
+}
+
+.profile-detail__label {
+    display: block;
+    margin-bottom: 5px;
+    color: #b08d4f;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.profile-detail p {
+    margin: 0;
+    color: #ffefcc;
+    overflow-wrap: anywhere;
+}
+
+.profile-logout-btn {
+    color: #ffefcc;
+    border: 1px solid #b08d4f;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.profile-logout-btn:hover {
+    background: #d4af70;
+    color: #10100f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-logout-btn {
+        transition: none;
+    }
+}
+
+
 @media (max-width: 991px) {
     .vinyl-navigation {
         display: none;
